@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+    <head>
+        <meta charset='UTF-8' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>
+            <data:view.title.escaped/>
+        </title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
+        
+        <b:skin>
+            <![CDATA[
+        *{
+            font-family: sans-serif;
+        }
+        ]]>
+        </b:skin>
+
+    </head>
+
+    <body>
+        <div id='wrapper'>
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-sm">
+                        <a class="navbar-brand" expr:href="data:blog.homepageUrl"><img
+                                src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" height="30" class="d-inline-block align-top"
+                                expr:alt='data:blog.title' /></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                            </ul>
+                            <form class="form-inline my-2 my-lg-0" action="/search">
+                                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Kata Kunci"
+                                    aria-label="Search" />
+                                <button class="btn btn-primary my-2 my-sm-0" type="submit">Cari</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class='container mt-5'>
+                <div class="row">
+                    <div class='clearfix' />
+                        <section  class="col-8" id='outer-wrapper'>
+                            <article id='article-wrapper'>
+                                <b:if cond='data:blog.url == data:blog.homepageUrl'>
+                                    <b:section class='slider' id='post-slider' maxwidgets='1' showaddelement='no'>
+                                        <b:widget id='PopularPosts2' locked='true' title='Postingan Populer' type='PopularPosts' version='1'>
+                                            <b:widget-settings>
+                                                <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+                                                <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                                                <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                                                <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                                            </b:widget-settings>
+                                            <b:includable id='main'>
+                                                <div class='carousel slide mb-3' data-ride='carousel' id='carouselExampleInterval'>
+                                                    <ol class='carousel-indicators'>
+                                                        <li class='active' data-slide-to='0' data-target='#carouselExampleCaptions' />
+                                                        <li data-slide-to='1' data-target='#carouselExampleCaptions' />
+                                                        <li data-slide-to='2' data-target='#carouselExampleCaptions' />
+                                                    </ol>
+                                                    <div class='carousel-inner'>
+                                                        <b:loop index='i' values='data:posts' var='post'>
+                                                            <b:with value='data:post.featuredImage' var='image'>
+                                                                <b:if cond='data:i == 1'>
+                                                                    <a class='carousel-item active' data-interval='5000' expr:href='data:post.href'>
+                                                                        <img class='d-block w-100 p-0 rounded' expr:src='data:image' />
+                                                                        <div class='carousel-caption'>
+                                                                            <h5>
+                                                                                <data:post.title />
+                                                                            </h5>
+                                                                            <small class='d-none d-md-block'>
+                                                                                <b:eval expr='snippet(data:post.snippet, {length: 100})' /></small>
+                                                                        </div>
+                                                                    </a>
+                                                                    <b:else />
+                                                                    <a class='carousel-item' data-interval='3000' expr:href='data:post.href'>
+                                                                        <img class='d-block w-100 p-0 rounded' expr:src='data:image' />
+                                                                        <div class='carousel-caption'>
+                                                                            <h5>
+                                                                                <data:post.title />
+                                                                            </h5>
+                                                                            <small class='d-none d-md-block'>
+                                                                                <b:eval expr='snippet(data:post.snippet, {length: 100})' /></small>
+                                                                        </div>
+                                                                    </a>
+                                                                </b:if>
+                                                            </b:with>
+                                                        </b:loop>
+                                                    </div>
+                                                    <a class='carousel-control-prev' data-slide='prev' href='#carouselExampleInterval' role='button'>
+                                                        <span aria-hidden='true' class='carousel-control-prev-icon' />
+                                                        <span class='sr-only'>Previous</span>
+                                                    </a>
+                                                    <a class='carousel-control-next' data-slide='next' href='#carouselExampleInterval' role='button'>
+                                                        <span aria-hidden='true' class='carousel-control-next-icon' />
+                                                        <span class='sr-only'>Next</span>
+                                                    </a>
+                                                </div>
+                                            </b:includable>
+                                        </b:widget>
+                                    </b:section>
+                                </b:if>
+                                <b:section class='main' id='main'>
+                                    <b:widget id='Blog1' locked='true' title='Posting Blog' type='Blog' version='1'>
+                                        <b:widget-settings>
+                                            <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+                                            <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+                                            <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+                                            <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+                                            <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+                                            <b:widget-setting name='showAuthor'>false</b:widget-setting>
+                                            <b:widget-setting name='disableGooglePlusShare'>false</b:widget-setting>
+                                            <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+                                            <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+                                            <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+                                            <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+                                            <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+                                            <b:widget-setting name='showLabels'>true</b:widget-setting>
+                                            <b:widget-setting name='showLocation'>false</b:widget-setting>
+                                            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+                                            <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+                                            <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+                                            <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+                                            <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+                                            <b:widget-setting name='showReactions'>false</b:widget-setting>
+                                        </b:widget-settings>
+                                        <b:includable id='main'>
+                                            <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                                                <div class='row row-cols-1 row-cols-md-2'>
+                                                    <b:loop values='data:posts' var='post'>
+                                                        <b:include data='post' name='index' />
+                                                    </b:loop>
+                                                </div>
+                                                <b:include name='nextprev' />
+                                            </b:if>
+                                            <b:loop values='data:posts' var='post'>
+                                                <b:include data='post' name='post' />
+                                            </b:loop>
+                                        </b:includable>
+                                        <b:includable id='index' var='post'>
+                                            <div class='col mb-4'>
+                                                <div class='card'>
+                                                    <b:if cond='data:post.firstImageUrl'>
+                                                        <img class='card-img-top' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
+                                                    </b:if>
+                                                    <div class='card-body'>
+                                                        <a expr:href='data:post.url'>
+                                                            <h5 class='card-title'>
+                                                                <data:post.title />
+                                                            </h5>
+                                                        </a>
+                                                        <p class='card-text'>
+                                                            <b:eval expr='snippet(data:post.snippet, {length: 100})' />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </b:includable>
+                                        <b:includable id='post' var='post'>
+                                            <b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
+                                                <div>
+                                                    <!-- Post Start -->
+                                                    <div class='card mb-3' itemprop='blogPost' itemscope='itemscope'
+                                                        itemtype='http://schema.org/BlogPosting'>
+                                                        <b:if cond='data:post.firstImageUrl'>
+                                                            <meta expr:content='data:post.firstImageUrl' itemprop='image_url' />
+                                                        </b:if>
+                                                        <meta expr:content='data:blog.blogId' itemprop='blogId' />
+                                                        <meta expr:content='data:post.id' itemprop='postId' />
+                                                        <a expr:name='data:post.id' />
+                                                        <b:if cond='data:post.firstImageUrl'>
+                                                            <img class='card-img-top' expr:src='data:post.firstImageUrl'
+                                                                expr:alt='data:post.title' />
+                                                        </b:if>
+                                                        <div class='card-body mb-0 pb-0'>
+                                                            <b:if cond='data:post.title'>
+                                                                <h2 class='card-title' itemprop='name'>
+                                                                    <data:post.title />
+                                                                </h2>
+                                                            </b:if>
+                                                            <b:if cond='data:top.showTimestamp'>
+                                                                <span class='card-text'>
+                                                                    <small class='text-muted'>
+                                                                        Oleh
+                                                                        <data:post.author /> &#8226; Di update pada
+                                                                        <data:post.timestamp />
+                                                                    </small>
+                                                                </span>
+                                                            </b:if>
+                                                            <hr />
+                                                        </div>
+                                                        <div class='card-body pt-0 mt-0' expr:id='&quot;post-body-&quot; + data:post.id'
+                                                            expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+                                                            <data:post.body />
+                                                        </div>
+                                                        <div class='card-footer'>
+                                                            <div class='post-footer-line post-footer-line-1'>
+                                                                <b:if cond='data:post.labels'>
+                                                                    <b:loop values='data:post.labels' var='label'>
+                                                                        <span class='badge badge-success'>
+                                                                            <a class='text-white' expr:href='data:label.url' rel='tag'>
+                                                                                #
+                                                                                <data:label.name />
+                                                                            </a>
+                                                                        </span>
+                                                                    </b:loop>
+                                                                </b:if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Post End -->
+                                                    <b:include name='nextprev' />
+                                                    <div class="card p-3 mb-3">
+                                                        <b:include data='post' name='comment_picker' />
+                                                    </div>
+                                                </div>
+                                            </b:if>
+                                        </b:includable>
+                                        <b:includable id='nextprev'>
+                                            <div class='d-flex justify-content-between mb-3'>
+                                                <b:if cond='data:newerPageUrl'>
+                                                    <a expr:href='data:newerPageUrl'
+                                                        expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
+                                                        expr:title='data:newerPageTitle'>
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            <data:newerPageTitle /></button>
+                                                    </a>
+                                                </b:if>
+                                                <b:if cond='data:olderPageUrl'>
+                                                    <a expr:href='data:olderPageUrl'
+                                                        expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+                                                        expr:title='data:olderPageTitle'>
+                                                        <button type="button" class="btn btn-outline-primary">
+                                                            <data:olderPageTitle /></button>
+                                                    </a>
+                                                </b:if>
+                                            </div>
+                                        </b:includable>
+                                    </b:widget>
+                                </b:section>
+                            </article>
+                        </section>
+                    <div class='clearfix' />
+                        <aside class='col-12 col-lg-4' id='sidebar-wrapper'>
+                            <b:section class='sidebar' id='sidebar' showaddelement='yes'>
+                                <!-- Widget Postingan Populer dimulai dari sini -->
+                                <b:widget id='PopularPosts1' locked='false' title='Postingan Populer' type='PopularPosts'>
+                                    <!-- Peggaturan Widget -->
+                                    <b:widget-settings>
+                                        <b:widget-setting name='numItemsToShow'>10</b:widget-setting>
+                                        <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                                        <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                                        <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                                    </b:widget-settings>
+                                    <!-- Layout Widget -->
+                                    <b:includable id='main'>
+                                        <div class="list-group">
+                                            <!-- Judul widget -->
+                                            <b:if cond='data:title != &quot;&quot;'>
+                                                <span class="list-group-item list-group-item-action active">
+                                                    <data:title/>
+                                                </span>
+                                            </b:if>
+                                            <!-- Daftar Potingan Populer -->
+                                            <b:loop values='data:posts' var='post'>
+                                                <b:if cond='!data:showSnippets'>
+                                                    <a class="list-group-item list-group-item-action">
+                                                        <data:post.title/>
+                                                    </a>
+                                                    <b:else/>
+                                                    <a expr:href='data:post.href' class="list-group-item list-group-item-action">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h5 class="mb-1">
+                                                                <data:post.title/>
+                                                            </h5>
+                                                        </div>
+                                                        <hr/>
+                                                        <p class="mb-1">
+                                                            <data:post.snippet/>
+                                                        </p>
+                                                    </a>
+                                                </b:if>
+                                            </b:loop>
+                                        </div>
+                                    </b:includable>
+                                </b:widget>
+                            </b:section>
+                        </aside>
+                </div>
+            </div>
+
+            <div class='clearfix' />
+
+            <footer class='jumbotron jumbotron-fluid m-0' id='footer-wrapper'>
+                <div class="container text-center">
+                    <p><data:blog.title/> &#169; 2021</p>
+                </div>
+            </footer>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    
+    </body>
+
+</html>
