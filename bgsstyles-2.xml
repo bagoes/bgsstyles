@@ -12,9 +12,7 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-        <!--Lightbox -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+        
         <b:skin>
             <![CDATA[
         *{
@@ -113,13 +111,13 @@
                 <section id="label" class="label"  showaddelement='no'>
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-12 text-center mb-3">
+                            <div class="col-sm-12 mb-3">
                                 <h5>Labels</h5>
                                 <hr/>
                             </div>
                         </div>
                         
-                        <div class="row row-cols-1 row-cols-md-3">                               
+                        <div class="row row-cols-1 row-cols-md-5">                               
                             <div class="col-mb-4">
                                 <div class="card h-100 card-bg">
                                     <i class="bi bi-cup-fill"></i>
@@ -179,293 +177,307 @@
             <div class='container mt-5'>
                 <div class="row">
                     <!-- Homepage -->
-                    
-                        <!-- Featured Post -->
-                        
-                            <b:section ads='true' class='main' id='page_body' name='Page Body' showaddelement='false'>
-                                <!-- Widget Featured Post Start -->
-                                <b:widget id='FeaturedPost1' cond='data:view.isHomepage' locked='true' title='Featured Post' type='FeaturedPost' visible='true'>
-                                    <!-- Widget Setting -->
-                                    <b:widget-settings>
-                                        <b:widget-setting name='showSnippet'>true</b:widget-setting>
-                                        <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-                                        <b:widget-setting name='postId'></b:widget-setting>
-                                        <b:widget-setting name='showFirstImage'>true</b:widget-setting>
-                                        <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
-                                    </b:widget-settings>
-                                    <!-- Widget Layout -->
-                                    <b:includable id='main'>
-                                        <div class="col-12 mb-3">
-                                            <div class="card h-100 mb-3 border-0">
-                                                <!-- Widget Tittle -->
-                                                <b:if cond='data:title != &quot;&quot;'>
-                                                    <span class="card-header text-center bg-transparent border-0"><h5><data:title/></h5><hr/></span>
-                                                </b:if>
-                                                <div class="row no-gutters">
-                                                    <div class="col-md-4 order-md-last">
-                                                        <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
-                                                            <img class='image' style="width:100%" expr:src='data:postFirstImage'/>
+                      
+                    <b:section ads='true' class='main' id='Page Body' name='Page Body' showaddelement='false'>
+                        <!-- Widget Featured Post -->
+                        <b:widget id='FeaturedPost1' locked='true' title='Featured Post' type='FeaturedPost' visible='true'>
+                            <!-- Widget Setting -->
+                            <b:widget-settings>
+                                <b:widget-setting name='showSnippet'>true</b:widget-setting>
+                                <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+                                <b:widget-setting name='postId'></b:widget-setting>
+                                <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+                                <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
+                            </b:widget-settings>
+                            <!-- Widget Layout -->
+                            <b:includable id='main'>
+                                <b:if cond='data:blog.url == data:blog.homepageUrl'>
+                                    <div class="col-12 mb-5">
+                                        <div class="card h-100 mb-3 border-0">
+                                            <!-- Widget Tittle -->
+                                            <b:if cond='data:title != &quot;&quot;'>
+                                                <span class="card-header bg-transparent border-0"><h5><data:title/></h5><hr/></span>
+                                            </b:if>
+                                            <div class="row no-gutters">
+                                                <div class="col-md-4 order-md-last">
+                                                    <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+                                                        <img class='image' style="width:100%" expr:src='data:postFirstImage'/>
+                                                    </b:if>
+                                                </div>
+                                                <div class="col-md-8 order-md-first">  
+                                                    <div class="card-body">
+                                                        <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
+                                                            <h5 class="card-title">
+                                                                <a expr:href='data:postUrl' class='stretched-link text-reset'><data:postTitle/></a>
+                                                            </h5>
+                                                        </b:if>
+                                                        <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
+                                                            <p class="card-text">
+                                                                <b:eval expr='snippet(data:postSummary, {length: 150})' />
+                                                            </p>
                                                         </b:if>
                                                     </div>
-                                                    <div class="col-md-8 order-md-first">  
-                                                        <div class="card-body">
-                                                            <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
-                                                                <h5 class="card-title">
-                                                                    <a expr:href='data:postUrl' class='stretched-link text-reset'><data:postTitle/></a>
-                                                                </h5>
-                                                            </b:if>
-                                                            <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
-                                                                <p class="card-text">
-                                                                    <b:eval expr='snippet(data:postSummary, {length: 150})' />
-                                                                </p>
-                                                            </b:if>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </b:includable>
-                                </b:widget>
-                                <!-- Widget Carousel -->
-                                <b:widget id='PopularPosts2' cond='data:view.isHomepage' locked='true' title='Popular Posts' type='PopularPosts' version='1' visible='true'>
-                                    <b:widget-settings>
-                                        <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
-                                        <b:widget-setting name='showThumbnails'>true</b:widget-setting>
-                                        <b:widget-setting name='showSnippets'>true</b:widget-setting>
-                                        <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
-                                    </b:widget-settings>
-                                    <!-- Widget Layout -->
-                                    <b:includable id='main'>
-                                        <div class="col-12 mb-3">
-                                            <div class='carousel slide mb-3 card h-100 border-0' data-ride='carousel' id='carouselExampleInterval'>
-                                                <!-- Widget Title -->
-                                                <b:if cond='data:title != &quot;&quot;'>
-                                                    <span class="card-header text-center bg-transparent border-0"><h5><data:title/></h5><hr/></span>
-                                                </b:if>
-                                                <div class="carousel-inner">
-                                                    <b:loop index='i' values='data:posts' var='post'>
-                                                        <b:with value='data:post.featuredImage' var='image'>
-                                                            <b:if cond='data:i == 1'>
-                                                                <a class='carousel-item active text-reset' data-interval='5000' expr:href='data:post.href'>
-                                                                    <div class="row no-gutter">
-                                                                        <div class="col-md-4">
-                                                                            <img class='d-block w-100 p-0 card-img-top' expr:src='data:image' />
-                                                                        </div>
-                                                                        <div class="col-md-8">
-                                                                            <div class="card-body">
-                                                                                <h5 class="card-title">
-                                                                                    <data:post.title />
-                                                                                </h5>
-                                                                                <p class='card-text'>
-                                                                                    <b:eval expr='snippet(data:post.snippet, {length: 100})' />
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                                <b:else />
-                                                                <a class='carousel-item text-reset' data-interval='3000' expr:href='data:post.href'>
-                                                                    <div class="row no-gutter">
-                                                                        <div class="col-md-4">
-                                                                            <img class='d-block w-100 p-0 card-img-top' expr:src='data:image' />
-                                                                        </div>
-                                                                        <div class="col-md-8">
-                                                                            <div class="card-body">
-                                                                                <h5 class="card-title">
-                                                                                    <data:post.title />
-                                                                                </h5>
-                                                                                <p class='card-text'>
-                                                                                    <b:eval expr='snippet(data:post.snippet, {length: 100})' />
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                                
-                                                            </b:if>
-                                                        </b:with>
-                                                    </b:loop>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </b:includable>
-                                </b:widget>
-                            </b:section> 
+                                    </div>
+                                </b:if>
 
-                    <section  class="col-md-8" id='outer-wrapper'>
-                        <!-- Article -->
-                        <article id='article-wrapper'>
+                            </b:includable>
+                        </b:widget>
+                        <!-- Widget Carousel -->
+                        <b:widget id='PopularPosts1' cond='data:view.isHomepage' locked='true' title='Popular Posts' type='PopularPosts' version='1' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+                                <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                                <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                                <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                            </b:widget-settings>
+                            <!-- Widget Layout -->
+                            <b:includable id='main'>
+                                <div class="col-12 mb-5">
+                                    <div class='carousel slide mb-3 card h-100 border-0' data-ride='carousel' id='carouselExampleInterval'>
+                                        <!-- Widget Title -->
+                                        <b:if cond='data:title != &quot;&quot;'>
+                                            <span class="card-header bg-transparent border-0"><h5><data:title/></h5><hr/></span>
+                                        </b:if>
+                                        <div class="carousel-inner">
+                                            <b:loop index='i' values='data:posts' var='post'>
+                                                <b:with value='data:post.featuredImage' var='image'>
+                                                    <b:if cond='data:i == 1'>
+                                                        <a class='carousel-item active text-reset' data-interval='5000' expr:href='data:post.href'>
+                                                            <div class="row no-gutter">
+                                                                <div class="col-md-4">
+                                                                    <img class='d-block w-100 p-0 card-img-top' expr:src='data:image' />
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">
+                                                                            <data:post.title />
+                                                                        </h5>
+                                                                        <p class='card-text'>
+                                                                            <b:eval expr='snippet(data:post.snippet, {length: 100})' />
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <b:else />
+                                                        <a class='carousel-item text-reset' data-interval='3000' expr:href='data:post.href'>
+                                                            <div class="row no-gutter">
+                                                                <div class="col-md-4">
+                                                                    <img class='d-block w-100 p-0 card-img-top' expr:src='data:image' />
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">
+                                                                            <data:post.title />
+                                                                        </h5>
+                                                                        <p class='card-text'>
+                                                                            <b:eval expr='snippet(data:post.snippet, {length: 100})' />
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        
+                                                    </b:if>
+                                                </b:with>
+                                            </b:loop>
+                                        </div>
+                                    </div>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+
+                    <article class="col-md-9" id='main-wrapper'>
+                        <b:section class='main' id='main'>
                             <!-- Blog Posts -->
-                            <b:section class='main' id='main'>
-                                <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
-                                    <b:widget-settings>
-                                        <b:widget-setting name='showDateHeader'>true</b:widget-setting>
-                                        <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
-                                        <b:widget-setting name='showShareButtons'>true</b:widget-setting>
-                                        <b:widget-setting name='showCommentLink'>true</b:widget-setting>
-                                        <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
-                                        <b:widget-setting name='showAuthor'>true</b:widget-setting>
-                                        <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
-                                        <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
-                                        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-                                        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-                                        <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-                                        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-                                        <b:widget-setting name='showLabels'>true</b:widget-setting>
-                                        <b:widget-setting name='showLocation'>false</b:widget-setting>
-                                        <b:widget-setting name='showTimestamp'>true</b:widget-setting>
-                                        <b:widget-setting name='postsPerAd'>1</b:widget-setting>
-                                        <b:widget-setting name='showBacklinks'>false</b:widget-setting>
-                                        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
-                                        <b:widget-setting name='showInlineAds'>true</b:widget-setting>
-                                        <b:widget-setting name='showReactions'>false</b:widget-setting>
-                                    </b:widget-settings>
-                                    <!-- Main Layout -->
-                                    <b:includable id='main'>
-                                        <!-- Search No Results -->
-                                        <b:if cond='not data:posts.any'>
-                                            <div class='no-posts'>
-                                                <b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/>
+                            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+                                    <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+                                    <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+                                    <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+                                    <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+                                    <b:widget-setting name='showAuthor'>true</b:widget-setting>
+                                    <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+                                    <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+                                    <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+                                    <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+                                    <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+                                    <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+                                    <b:widget-setting name='showLabels'>true</b:widget-setting>
+                                    <b:widget-setting name='showLocation'>false</b:widget-setting>
+                                    <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+                                    <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+                                    <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+                                    <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+                                    <b:widget-setting name='showInlineAds'>true</b:widget-setting>
+                                    <b:widget-setting name='showReactions'>false</b:widget-setting>
+                                </b:widget-settings>
+                                <!-- Main Layout -->
+                                <b:includable id='main'>
+                                    <!-- Search No Results -->
+                                    <b:if cond='not data:posts.any'>
+                                        <div class='no-posts'>
+                                            <b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/>
+                                        </div>
+                                    </b:if>
+                                    <!-- Display title on homepage -->
+                                    <b:if cond='data:posts.any and data:view.isHomepage'>
+                                        <h5 class='title'><data:messages.latestPosts/></h5><hr/>
+                                    </b:if>
+                                    <!-- Include Index -->
+                                    <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                                        <div class='row row-cols-1 row-cols-md-2'>
+                                            <b:loop values='data:posts' var='post'>
+                                                <b:include data='post' name='index' />
+                                            </b:loop>
+                                        </div>
+                                        <!-- Include Navigation -->
+                                        <b:include name='nextprev' />
+                                    </b:if>
+                                    <!-- Include Post -->
+                                    <b:loop values='data:posts' var='post'>
+                                        <b:include data='post' name='post' />
+                                    </b:loop>
+                                </b:includable>
+                                <!-- Index -->
+                                <b:includable id='index' var='post'>
+                                    <div class='col mb-4'>
+                                        <div class='card h-100 border-0'>
+                                            <b:if cond='data:post.firstImageUrl'>
+                                                <img class='card-img-top' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
+                                            </b:if>
+                                            <div class='card-body'>
+                                                <a expr:href='data:post.url'>
+                                                    <h5 class='card-title'>
+                                                        <data:post.title />
+                                                    </h5>
+                                                </a>
+                                                <p class='card-text'>
+                                                    <b:eval expr='snippet(data:post.snippet, {length: 100})' />
+                                                </p>
                                             </div>
-                                        </b:if>
-                                        <!-- Display title on homepage -->
-                                        <b:if cond='data:posts.any and data:view.isHomepage'>
-                                            <h5 class='title'><data:messages.latestPosts/></h5><hr/>
-                                        </b:if>
-                                        <!-- Include Index -->
-                                        <b:if cond='data:blog.pageType == &quot;index&quot;'>
-                                            <div class='row row-cols-1 row-cols-md-2'>
-                                                <b:loop values='data:posts' var='post'>
-                                                    <b:include data='post' name='index' />
-                                                </b:loop>
-                                            </div>
-                                            <!-- Include Navigation -->
-                                            <b:include name='nextprev' />
-                                        </b:if>
-                                        <!-- Include Post -->
-                                        <b:loop values='data:posts' var='post'>
-                                            <b:include data='post' name='post' />
-                                        </b:loop>
-                                    </b:includable>
-                                    <!-- Index -->
-                                    <b:includable id='index' var='post'>
-                                        <div class='col mb-4'>
-                                            <div class='card h-100'>
+                                        </div>
+                                    </div>
+                                </b:includable>
+                                <!-- Post -->
+                                <b:includable id='post' var='post'>
+                                    <!-- Page -->
+                                    <b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
+                                        <div>
+                                            <!-- Start Post -->
+                                            <div class='card mb-3 border-0' itemprop='blogPost' itemscope='itemscope'
+                                                itemtype='http://schema.org/BlogPosting'>
                                                 <b:if cond='data:post.firstImageUrl'>
-                                                    <img class='card-img-top' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
+                                                    <meta expr:content='data:post.firstImageUrl' itemprop='image_url' />
                                                 </b:if>
-                                                <div class='card-body'>
-                                                    <a expr:href='data:post.url'>
-                                                        <h5 class='card-title'>
-                                                            <data:post.title />
-                                                        </h5>
-                                                    </a>
-                                                    <p class='card-text'>
-                                                        <b:eval expr='snippet(data:post.snippet, {length: 100})' />
-                                                    </p>
+                                                <meta expr:content='data:blog.blogId' itemprop='blogId' />
+                                                <meta expr:content='data:post.id' itemprop='postId' />
+                                                <a expr:name='data:post.id' />
+                                                <b:if cond='data:post.firstImageUrl'>
+                                                    <img class='card-img-top' expr:src='data:post.firstImageUrl'
+                                                        expr:alt='data:post.title' />
+                                                </b:if>
+                                                <!-- Container -->
+                                                <div class='card-body mb-0 pb-0'>
+                                                    <!-- Article Title -->
+                                                    <b:if cond='data:post.title'>
+                                                        <h2 class='card-title' itemprop='name'>
+                                                        <data:post.title />
+                                                        </h2>
+                                                    </b:if>
+                                                    <!-- Writer and Post Date -->
+                                                    <b:if cond='data:post.timestamp'>
+                                                        <span class='card-text'>
+                                                            <small class='text-muted'>
+                                                                By
+                                                                <data:post.author /> &#8226; Updated
+                                                                <data:post.timestamp />
+                                                            </small>
+                                                        </span>
+                                                    </b:if>
+                                                    <hr />
                                                 </div>
+                                                <!-- Post Content Container -->
+                                                <div class='card-body pt-0 mt-0' expr:id='&quot;post-body-&quot; + data:post.id'
+                                                    expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+                                                    <data:post.body />
+                                                </div>
+                                                <!-- Label Container -->
+                                                <div class='card-footer'>
+                                                    <div class='post-footer-line post-footer-line-1'>
+                                                        <b:if cond='data:post.labels'>
+                                                            <b:loop values='data:post.labels' var='label'>
+                                                                <span class='badge badge-secondary'>
+                                                                    <a class='text-white' expr:href='data:label.url' rel='tag'>
+                                                                        #
+                                                                        <data:label.name />
+                                                                    </a>
+                                                                </span>
+                                                            </b:loop>
+                                                        </b:if>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Post -->
+                                            <b:include name='nextprev' />
+                                            <div class="card p-3 mb-3">
+                                                <b:include data='post' name='comment_picker' />
                                             </div>
                                         </div>
-                                    </b:includable>
-                                    <!-- Post -->
-                                    <b:includable id='post' var='post'>
-                                        <!-- Page -->
-                                        <b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
-                                            <div>
-                                                <!-- Start Post -->
-                                                <div class='card mb-3' itemprop='blogPost' itemscope='itemscope'
-                                                    itemtype='http://schema.org/BlogPosting'>
-                                                    <b:if cond='data:post.firstImageUrl'>
-                                                        <meta expr:content='data:post.firstImageUrl' itemprop='image_url' />
-                                                    </b:if>
-                                                    <meta expr:content='data:blog.blogId' itemprop='blogId' />
-                                                    <meta expr:content='data:post.id' itemprop='postId' />
-                                                    <a expr:name='data:post.id' />
-                                                    <b:if cond='data:post.firstImageUrl'>
-                                                        <img class='card-img-top' expr:src='data:post.firstImageUrl'
-                                                            expr:alt='data:post.title' />
-                                                    </b:if>
-                                                    <!-- Container -->
-                                                    <div class='card-body mb-0 pb-0'>
-                                                        <!-- Article Title -->
-                                                        <b:if cond='data:post.title'>
-                                                            <h2 class='card-title' itemprop='name'>
-                                                            <data:post.title />
-                                                            </h2>
-                                                        </b:if>
-                                                        <!-- Writer and Post Date -->
-                                                        <b:if cond='data:post.timestamp'>
-                                                            <span class='card-text'>
-                                                                <small class='text-muted'>
-                                                                    By
-                                                                    <data:post.author /> &#8226; Updated
-                                                                    <data:post.timestamp />
-                                                                </small>
-                                                            </span>
-                                                        </b:if>
-                                                        <hr />
-                                                    </div>
-                                                    <!-- Post Content Container -->
-                                                    <div class='card-body pt-0 mt-0' expr:id='&quot;post-body-&quot; + data:post.id'
-                                                        expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
-                                                        <data:post.body />
-                                                    </div>
-                                                    <!-- Label Container -->
-                                                    <div class='card-footer'>
-                                                        <div class='post-footer-line post-footer-line-1'>
-                                                            <b:if cond='data:post.labels'>
-                                                                <b:loop values='data:post.labels' var='label'>
-                                                                    <span class='badge badge-secondary'>
-                                                                        <a class='text-white' expr:href='data:label.url' rel='tag'>
-                                                                            #
-                                                                            <data:label.name />
-                                                                        </a>
-                                                                    </span>
-                                                                </b:loop>
-                                                            </b:if>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Post -->
-                                                <b:include name='nextprev' />
-                                                <div class="card p-3 mb-3">
-                                                    <b:include data='post' name='comment_picker' />
-                                                </div>
-                                            </div>
+                                    </b:if>
+                                </b:includable>
+                                <!-- Navigation -->
+                                <b:includable id='nextprev'>
+                                    <div class='d-flex justify-content-between mb-3'>
+                                        <b:if cond='data:newerPageUrl'>
+                                            <a expr:href='data:newerPageUrl'
+                                                expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
+                                                expr:title='data:newerPageTitle'>
+                                                <button type="button" class="btn btn-outline-dark">
+                                                    <data:newerPageTitle /></button>
+                                            </a>
                                         </b:if>
-                                    </b:includable>
-                                    <!-- Navigation -->
-                                    <b:includable id='nextprev'>
-                                        <div class='d-flex justify-content-between mb-3'>
-                                            <b:if cond='data:newerPageUrl'>
-                                                <a expr:href='data:newerPageUrl'
-                                                    expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
-                                                    expr:title='data:newerPageTitle'>
-                                                    <button type="button" class="btn btn-outline-dark">
-                                                        <data:newerPageTitle /></button>
-                                                </a>
-                                            </b:if>
-                                            <b:if cond='data:olderPageUrl'>
-                                                <a expr:href='data:olderPageUrl'
-                                                    expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
-                                                    expr:title='data:olderPageTitle'>
-                                                    <button type="button" class="btn btn-outline-dark">
-                                                        <data:olderPageTitle /></button>
-                                                </a>
-                                            </b:if>
-                                        </div>
-                                    </b:includable>
-                                </b:widget>
-                            </b:section>
-                        </article>
-                    </section>
-
+                                        <b:if cond='data:olderPageUrl'>
+                                            <a expr:href='data:olderPageUrl'
+                                                expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+                                                expr:title='data:olderPageTitle'>
+                                                <button type="button" class="btn btn-outline-dark">
+                                                    <data:olderPageTitle /></button>
+                                            </a>
+                                        </b:if>
+                                    </div>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </article>
                     <div class='clearfix' />
 
-                    <aside class='col-12 col-md-4' id='sidebar-wrapper'>
-                        <b:section class='sidebar' id='sidebar' showaddelement='yes'>
-                            <!-- Widget Popular Posts Start -->
-                            <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts'>
+                    <aside class='col-12 col-md-3' id='sidebar-wrapper'>
+                        <b:section class='sidebar' id='sidebar1' showaddelement='yes'>
+                            <!-- Side Widget Text -->
+                            <b:widget id='Text1' locked='false' title='About' type='Text'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</b:widget-setting>
+                                    </b:widget-settings>
+                                <b:includable id='main'>
+                                <!-- only display title if it's non-empty -->
+                                <b:if cond='data:title != &quot;&quot;'>
+                                    <h5 class='title'><data:title/></h5><hr/>
+                                </b:if>
+                                <div class='widget-content'>
+                                    <data:content/>
+                                </div>
+                                <b:include name='quickedit'/>
+                                </b:includable>
+                            </b:widget>
+
+                            <!-- Side Widget Popular Posts -->
+                            <b:widget id='PopularPosts2' locked='false' title='Popular Posts' type='PopularPosts'>
                                 <!-- Widget Setting -->
                                 <b:widget-settings>
                                     <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
@@ -509,6 +521,7 @@
                             </b:widget>
                         </b:section>
                     </aside>
+
                 </div>
             </div>
             <div class='clearfix' />
