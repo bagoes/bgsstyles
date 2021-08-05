@@ -24,11 +24,12 @@
         }
 
         .jumbotron {
+            margin-top:50px;
             height: 500px;
             background-image: url('https://i.postimg.cc/mrdmwwzz/bgimg-nasgor.jpg');
             background-attachment: fixed;
             background-size: cover;
-            background-position: 0 -100px;
+            background-position: 0 -100px center;
             color: #eaeaea;
             overflow: hidden;
         }
@@ -64,7 +65,19 @@
         
         <header id='header-wrapper'>
             <b:section class='header' id='header' maxwidgets='1'>
-                <b:widget id='Header1' locked='true' title='Basic Blogger Template (Header)' type='Header'></b:widget>
+                <b:widget id='Header1' locked='true' cond='data:view.isHomepage' title='Basic Blogger Template (Header)' type='Header'>
+                    <b:widget-settings>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container text-center">
+                                <img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png"  width="20%"/>
+                                <h1 class="display-4"><data:view.title.escaped/></h1>
+                                <p class="lead">description</p>
+                            </div>
+                        </div>
+                    </b:includable>
+                </b:widget>
             </b:section>
             <!-- Navbar -->
             <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -84,7 +97,10 @@
                                 <a class="nav-link" href="data:blog.homepageUrl">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#about">About</a>
+                                <a class="nav-link" href="#HTML1">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#FeaturedPost1">Feature</a>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0" action="/search">
@@ -97,88 +113,76 @@
             </nav>
         </header>
 
-            <b:if cond='data:blog.url == data:blog.homepageUrl'>
-                <!-- Jumbotron -->
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container text-center">
-                        <img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png"  width="20%"/>
-                        <h1 class="display-4"><data:view.title.escaped/></h1>
-                        <p class="lead">template</p>
-                    </div>
-                </div>
 
-                <!-- Labels -->
-                <section id="label" class="label"  showaddelement='no'>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 mb-3">
-                                <h5>Labels</h5>
-                                <hr/>
-                            </div>
-                        </div>
-                        
-                        <div class="row row-cols-1 row-cols-md-5">                               
-                            <div class="col-mb-4">
-                                <div class="card h-100 card-bg">
-                                    <i class="bi bi-cup-fill"></i>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Kopi</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="https://bgsstyles.blogspot.com/search/label/kopi" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-mb-4">
-                                <div class="card h-100 card-bg">
-                                    <i class="bi bi-egg-fried"></i>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Nasgor</h5>
-                                        <p class="card-text">This is a short card.</p>
-                                        <a href="" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-mb-4">
-                                <div class="card h-100 card-bg">
-                                    <i class="bi bi-cup-straw"></i>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Cendol</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-mb-4">
-                                <div class="card h-100 card-bg">
-                                    <i class="bi bi-rainbow"></i>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Brunch</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-mb-4">
-                                <div class="card h-100 card-bg">
-                                    <i class="bi bi-palette-fill"></i>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Desain</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="https://bgsstyles.blogspot.com/search/label/desain" class="stretched-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </b:if>
             <div class='clearfix' />
 
             <div class='container mt-5'>
                 <div class="row">
                     <!-- Homepage -->
                       
-                    <b:section ads='true' class='main' id='Page Body' name='Page Body' showaddelement='false'>
+                    <b:section ads='true' class='main' id='Page Body' name='Page Body' showaddelement='yes'>
+                        <!-- About -->
+                        <b:widget id='HTML1' locked='false' title='' type='HTML'>
+                            <b:widget-settings>
+                                <b:widget-setting name='content'>&lt;div class=&quot;card border-0 text-center&quot;&gt;
+                                    &lt;div class=&quot;card-body&quot;&gt;
+                                        &lt;h5 class=&quot;card-title&quot;&gt;About&lt;/h5&gt;&lt;hr/&gt;
+                                        &lt;img src=&quot;https://i.postimg.cc/HLpF29h8/profile1.png&quot; class=&quot;card-img-top mb-3&quot; alt=&quot;about&quot; style=&quot;width: 10rem;&quot; /&gt;
+                                        &lt;p class=&quot;card-text text-center&quot;&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum hic accusamus doloribus, nostrum obcaecati nam totam quod consequatur laborum at fugit debitis voluptas perspiciatis voluptate doloremque repellendus, quibusdam repellat!.&lt;/p&gt;
+                                        &lt;a href=&quot;#&quot; class=&quot;btn btn-outline-dark&quot;&gt;Go somewhere&lt;/a&gt;
+                                    &lt;/div&gt;
+                                    &lt;/div&gt;
+                                </b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <!-- only display title if it's non-empty -->
+                                <b:if cond='data:title != &quot;&quot;'>
+                                    <h2 class='title'><data:title/></h2>
+                                </b:if>
+                                <div class='widget-content'>
+                                    <data:content/>
+                                </div>
+                                <b:include name='quickedit'/>
+                            </b:includable>
+                        </b:widget>
+
+
+                        <!-- Label -->
+                        <b:widget id='Label1' cond='data:view.isHomepage' locked='yes' title='Label' type='Label'>
+                            <b:widget-settings>
+                                <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+                                <b:widget-setting name='display'>LIST</b:widget-setting>
+                                <b:widget-setting name='selectedLabelsList'/>
+                                <b:widget-setting name='showType'>ALL</b:widget-setting>
+                                <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class="col-sm-12 mb-3">
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <h5><data:title/></h5><hr/>
+                                    </b:if>
+                                </div>
+                                <div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
+                                    <div class='row row-cols-1 row-cols-md-5 m-3'>
+                                        <b:loop values='data:labels' var='label'>
+                                            <div class="col-mb-4 m-1">
+                                                <b:if cond='data:blog.url == data:label.url'>
+                                                    <span expr:dir='data:blog.languageDirection'><data:label.name/></span>
+                                                <b:else/>
+                                                    <a class="btn btn-outline-dark btn-block" role="button" expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
+                                                        <i class="bi bi-box-arrow-in-down"></i><br/>
+                                                        <data:label.name/>
+                                                        <b:if cond='data:showFreqNumbers'>
+                                                            <span dir='ltr'>(<data:label.count/>)</span>
+                                                        </b:if>
+                                                    </a>
+                                                </b:if>
+                                            </div>
+                                        </b:loop>
+                                    </div>
+                                </div>
+                            </b:includable>
+                        </b:widget>
                         <!-- Widget Featured Post -->
                         <b:widget id='FeaturedPost1' locked='true' title='Featured Post' type='FeaturedPost' visible='true'>
                             <!-- Widget Setting -->
@@ -196,12 +200,14 @@
                                         <div class="card h-100 mb-3 border-0">
                                             <!-- Widget Tittle -->
                                             <b:if cond='data:title != &quot;&quot;'>
-                                                <span class="card-header bg-transparent border-0"><h5><data:title/></h5><hr/></span>
+                                                <span class="card-header bg-transparent border-0 p-0"><h5><data:title/></h5><hr/></span>
                                             </b:if>
                                             <div class="row no-gutters">
                                                 <div class="col-md-4 order-md-last">
                                                     <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+                                                    <a expr:href='data:postUrl' class='stretched-link text-reset'>
                                                         <img class='image' style="width:100%" expr:src='data:postFirstImage'/>
+                                                        </a>
                                                     </b:if>
                                                 </div>
                                                 <div class="col-md-8 order-md-first">  
@@ -222,7 +228,6 @@
                                         </div>
                                     </div>
                                 </b:if>
-
                             </b:includable>
                         </b:widget>
                         <!-- Widget Carousel -->
@@ -239,7 +244,7 @@
                                     <div class='carousel slide mb-3 card h-100 border-0' data-ride='carousel' id='carouselExampleInterval'>
                                         <!-- Widget Title -->
                                         <b:if cond='data:title != &quot;&quot;'>
-                                            <span class="card-header bg-transparent border-0"><h5><data:title/></h5><hr/></span>
+                                            <span class="card-header bg-transparent border-0 p-0"><h5><data:title/></h5><hr/></span>
                                         </b:if>
                                         <div class="carousel-inner">
                                             <b:loop index='i' values='data:posts' var='post'>
@@ -280,7 +285,6 @@
                                                                 </div>
                                                             </div>
                                                         </a>
-                                                        
                                                     </b:if>
                                                 </b:with>
                                             </b:loop>
@@ -291,8 +295,9 @@
                         </b:widget>
                     </b:section>
 
+                    <!-- Main -->
                     <article class="col-md-9" id='main-wrapper'>
-                        <b:section class='main' id='main'>
+                        <b:section class='main' id='main' name='Main'>
                             <!-- Blog Posts -->
                             <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
                                 <b:widget-settings>
@@ -352,7 +357,7 @@
                                                 <img class='card-img-top' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
                                             </b:if>
                                             <div class='card-body'>
-                                                <a expr:href='data:post.url'>
+                                                <a expr:href='data:post.url' class='stretched-link text-reset'>
                                                     <h5 class='card-title'>
                                                         <data:post.title />
                                                     </h5>
@@ -439,7 +444,8 @@
                                                 expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
                                                 expr:title='data:newerPageTitle'>
                                                 <button type="button" class="btn btn-outline-dark">
-                                                    <data:newerPageTitle /></button>
+                                                    <data:newerPageTitle />
+                                                </button>
                                             </a>
                                         </b:if>
                                         <b:if cond='data:olderPageUrl'>
@@ -447,7 +453,8 @@
                                                 expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
                                                 expr:title='data:olderPageTitle'>
                                                 <button type="button" class="btn btn-outline-dark">
-                                                    <data:olderPageTitle /></button>
+                                                    <data:olderPageTitle />
+                                                </button>
                                             </a>
                                         </b:if>
                                     </div>
@@ -460,7 +467,7 @@
                     <aside class='col-12 col-md-3' id='sidebar-wrapper'>
                         <b:section class='sidebar' id='sidebar1' showaddelement='yes'>
                             <!-- Side Widget Text -->
-                            <b:widget id='Text1' locked='false' title='About' type='Text'>
+                            <b:widget id='Text1' locked='false' title='Text' type='Text'>
                                 <b:widget-settings>
                                     <b:widget-setting name='content'>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</b:widget-setting>
                                     </b:widget-settings>
@@ -469,7 +476,7 @@
                                 <b:if cond='data:title != &quot;&quot;'>
                                     <h5 class='title'><data:title/></h5><hr/>
                                 </b:if>
-                                <div class='widget-content'>
+                                <div class='widget-content mb-3'>
                                     <data:content/>
                                 </div>
                                 <b:include name='quickedit'/>
@@ -488,10 +495,10 @@
                                 <!-- Widget layout -->
                                 <b:includable id='main'>
                                     <b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
-                                        <div class="list-group mb-3">
+                                        <div class="list-group mb-3 border-0">
                                             <!-- Widget Tittle -->
                                             <b:if cond='data:title != &quot;&quot;'>
-                                                <span class="list-group-item list-group-item-action list-group-item-dark active">
+                                                <span class="list-group-item list-group-item-action list-group-item-light active">
                                                     <data:title/>
                                                 </span>
                                             </b:if>
@@ -510,7 +517,7 @@
                                                         </div>
                                                         <hr/>
                                                         <p class="mb-1" style="text-align: justify">
-                                                            <data:post.snippet/>
+                                                            <b:eval expr='snippet(data:post.snippet, {length: 50})' />
                                                         </p>
                                                     </a>
                                                 </b:if>
@@ -521,21 +528,47 @@
                             </b:widget>
                         </b:section>
                     </aside>
-
                 </div>
             </div>
             <div class='clearfix' />
-            
-            <footer class='bg-dark text-white' id='footer-wrapper'>
-                <div class='container'>
-                    <div class='row pt-3'>
-                        <div class='col text-center'>
-                            <p><a class='text text-white' href='https://bgs.web.id'><data:blog.title/></a> &#169; 2021</p>
-                        </div>
+
+        <footer class='bg-dark text-white' id='footer-wrapper'>
+            <div class='container'>
+                <div class="row pt-3">
+                    <div class="col">
+                        <b:section class='footer' id='footer' showaddelement='yes'>
+                            <b:widget id='Text2' locked='false' title='Text' type='Text'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                <!-- only display title if it's non-empty -->
+                                <b:if cond='data:title != &quot;&quot;'>
+                                    <h5 class='title'><data:title/></h5><hr/>
+                                </b:if>
+                                <div class='widget-content mb-3'>
+                                    <data:content/>
+                                </div>
+                                <b:include name='quickedit'/>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </div>
+                    <div class="col">
+                    2 of 3
+                    </div>
+                    <div class="col">
+                    3 of 3
                     </div>
                 </div>
-            </footer>
-
+            
+                <div class='row pt-3'>
+                    <div class='col text-center'>
+                        <p><a class='text text-white' href='https://bgs.web.id'><data:blog.title/></a> &#169; 2021</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
         
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
