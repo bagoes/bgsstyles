@@ -292,7 +292,7 @@
 
                     <div class='col-12 col-md-3 no-gutters' id='sidebar-wrapper'>
                         <b:section class='sidebar' id='sidebar1' showaddelement='yes'>
-                            <!-- Widget Popular Posts Start -->
+                            <!-- Widget Popular Posts Condition Homepage -->
                             <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts'>
                                 <!-- Widget Setting -->
                                 <b:widget-settings>
@@ -303,34 +303,100 @@
                                 </b:widget-settings>
                                 <!-- Widget layout -->
                                 <b:includable id='main'>
-                                    <div class="list-group mb-3">
+                                    <!-- Homepage Condition -->
+                                    <b:if cond='data:view.isHomepage' >
+                                        <div class="list-group mb-3">
+                                            <!-- Widget Tittle -->
+                                            <b:if cond='data:title != &quot;&quot;'>
+                                                <span class="list-group-item list-group-item-action list-group-item-dark active">
+                                                    <data:title/>
+                                                </span>
+                                            </b:if>
+                                            <!-- List Group Popular posts -->
+                                            <b:loop values='data:posts' var='post'>
+                                                <b:if cond='!data:showSnippets'>
+                                                    <a class="list-group-item list-group-item-action">
+                                                        <data:post.title/>
+                                                    </a>
+                                                    <b:else/>
+                                                    <a expr:href='data:post.href' class="list-group-item list-group-item-action">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h5 class="mb-1">
+                                                                <data:post.title/>
+                                                            </h5>
+                                                        </div>
+                                                        <hr/>
+                                                        <p class="mb-1">
+                                                            <data:post.snippet/>
+                                                        </p>
+                                                    </a>
+                                                </b:if>
+                                            </b:loop>
+                                        </div>
+                                    <b:else/>
                                         <!-- Widget Tittle -->
                                         <b:if cond='data:title != &quot;&quot;'>
-                                            <span class="list-group-item list-group-item-action list-group-item-dark active">
-                                                <data:title/>
-                                            </span>
+                                            <h5><data:title/></h5><hr/>
                                         </b:if>
-                                        <!-- List Group Popular posts -->
-                                        <b:loop values='data:posts' var='post'>
-                                            <b:if cond='!data:showSnippets'>
-                                                <a class="list-group-item list-group-item-action">
-                                                    <data:post.title/>
-                                                </a>
-                                                <b:else/>
-                                                <a expr:href='data:post.href' class="list-group-item list-group-item-action">
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <h5 class="mb-1">
-                                                            <data:post.title/>
-                                                        </h5>
+                                        <div class="col mb-3  p-0 border-0">
+                                            <!-- Card Popular posts -->
+                                            <b:loop index='i' values='data:posts' var='post'>
+                                                <b:with value='data:post.featuredImage' var='image' >
+                                                    <div class="card card-overlay-bottom card-img-scale mb-3">
+                                                        <b:if cond='data:i == 1'>
+                                                            <img class="card-img h-200 p-0" expr:src='data:image' />
+                                                            <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
+                                                                <!-- Card category -->
+                                                                <div>
+                                                                    <b:if cond='data:post.labels' var='label' >
+                                                                        <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
+                                                                            <i class="fas fa-circle me-2 small fw-bold"></i>
+                                                                            <data:label.name />
+                                                                        </a>
+                                                                    </b:if>
+                                                                </div>
+                                                                <div class="w-100 mt-auto">
+                                                                    <h5 class="text-white">
+                                                                        <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
+                                                                            <data:post.title/>
+                                                                        </a>
+                                                                    </h5>
+                                                                    <p style="text-align: justify; color: white; font-size: 12px;">
+                                                                        <b:eval expr='snippet(data:post.snippet, {length: 50})' />
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        <b:else />
+                                                            
+                                                            <img class="card-img h-200 p-0" expr:src='data:image' />
+                                                            <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
+                                                                <!-- Card category -->
+                                                                <div>
+                                                                    <b:if cond='data:post.labels' var='label' >
+                                                                        <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
+                                                                            <i class="fas fa-circle me-2 small fw-bold"></i>
+                                                                            <data:label.name />
+                                                                        </a>
+                                                                    </b:if>
+                                                                </div>
+                                                                <div class="w-100 mt-auto">
+                                                                    <h5 class="text-white">
+                                                                        <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
+                                                                            <data:post.title/>
+                                                                        </a>
+                                                                    </h5>
+                                                                    <p style="text-align: justify; color: white; font-size: 12px;">
+                                                                        <b:eval expr='snippet(data:post.snippet, {length: 50})' />
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </b:if>
                                                     </div>
-                                                    <hr/>
-                                                    <p class="mb-1">
-                                                        <data:post.snippet/>
-                                                    </p>
-                                                </a>
-                                            </b:if>
-                                        </b:loop>
-                                    </div>
+                                                </b:with>
+                                            </b:loop>
+                                        </div>
+                                    </b:if>
                                 </b:includable>
                             </b:widget>
                         </b:section>
