@@ -51,11 +51,18 @@
             color: secondary;
         }
 
-        .card-bg:hover {
-            background-color: lightgray;
+        footer p, footer a {
+            color: white;
+            text-align: center;
         }
 
-        
+        @media (max-width: 767.98px) {
+            footer p,
+            footer ul li {
+                text-align: center;
+            }
+        }
+
         ]]>
         </b:skin>
 
@@ -125,7 +132,7 @@
                                         </select>
                                         <span class='pagelist-arrow'>&amp;#9660;</span>
                                     <b:else/>
-                                        <ul class="navbar-nav mr-auto">
+                                        <ul class="navbar-nav mr-auto float-right">
                                             <b:loop values='data:links' var='link'>
                                                 <li class="nav-item active">
                                                     <b:class cond='data:link.isCurrentPage' name='selected'/>
@@ -305,17 +312,13 @@
                         <!-- Include Index -->
                         <b:if cond='data:blog.pageType == &quot;index&quot;'>
                             <div class="container">
-                                <div class="row p-2">
-                                    <div class="col-lg-12 p-0">
-                                        <div class='card-columns'>
-                                            <b:loop values='data:posts' var='post'>
-                                                <b:include data='post' name='index' />
-                                            </b:loop>
-                                        </div>
-                                    </div>
+                                <div class='card-columns'>
+                                    <b:loop values='data:posts' var='post'>
+                                        <b:include data='post' name='index' />
+                                    </b:loop>
+                                </div>
                                 <!-- Include Navigation -->
                                 <b:include name='nextprev' />
-                                </div>
                             </div>
                         </b:if>
                         <!-- Include Post -->
@@ -433,151 +436,155 @@
         </article>
         <div class='clearfix' />
         
-        <aside class='col-12' id='sidebar-wrapper'>
-            <!-- Sidebar 1-->
-            <b:section class='sidebar' id='sidebar1' showaddelement='yes'>
-                <!-- Side Widget Text -->
-                <b:widget id='Text1' locked='false' title='Text' type='Text'>
-                    <b:widget-settings>
-                        <b:widget-setting name='content'>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</b:widget-setting>
+        <aside class='col-12 bg-light' id='sidebar-wrapper'>
+            <div class="container py-3">
+                <!-- Sidebar 1-->
+                <b:section class='sidebar' id='sidebar1' showaddelement='yes'>
+                    <!-- Label -->
+                    <b:widget id='Label1' cond='data:view.isHomepage' locked='yes' title='Label' type='Label'>
+                        <b:widget-settings>
+                            <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+                            <b:widget-setting name='display'>LIST</b:widget-setting>
+                            <b:widget-setting name='selectedLabelsList'/>
+                            <b:widget-setting name='showType'>ALL</b:widget-setting>
+                            <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
                         </b:widget-settings>
-                    <b:includable id='main'>
-                    <!-- only display title if it's non-empty -->
-                    <b:if cond='data:title != &quot;&quot;'>
-                        <h5 class='title'><data:title/></h5><hr/>
-                    </b:if>
-                    <div class='widget-content mb-3'>
-                        <data:content/>
-                    </div>
-                    <b:include name='quickedit'/>
-                    </b:includable>
-                </b:widget>
-
-                <!-- Label -->
-                <b:widget id='Label1' cond='data:view.isHomepage' locked='yes' title='Label' type='Label'>
-                    <b:widget-settings>
-                        <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
-                        <b:widget-setting name='display'>LIST</b:widget-setting>
-                        <b:widget-setting name='selectedLabelsList'/>
-                        <b:widget-setting name='showType'>ALL</b:widget-setting>
-                        <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
-                    </b:widget-settings>
-                    <b:includable id='main'>
-                        <div class="col mb-3 p-0">
+                        <b:includable id='main'>
+                            <div class="col mb-3 p-0">
+                                <b:if cond='data:title != &quot;&quot;'>
+                                    <h5><data:title/></h5><hr/>
+                                </b:if>
+                            </div>
+                            <div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
+                                <div class="col mb-3 p-0">
+                                    <b:loop values='data:labels' var='label'>
+                                        <b:if cond='data:blog.url == data:label.url'>
+                                            <span expr:dir='data:blog.languageDirection'><data:label.name/></span>
+                                        <b:else/>
+                                            <a class="btn btn-outline-dark btn-sm mb-1" role="button" expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
+                                                <i class="bi bi-tag-fill" style="font-size: .8rem; color: secondary;"></i> 
+                                                <data:label.name/>
+                                                <b:if cond='data:showFreqNumbers'>
+                                                    <span dir='ltr'>(<data:label.count/>)</span>
+                                                </b:if>
+                                            </a>
+                                        </b:if>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                    <!-- Text -->
+                    <b:widget id='Text1' cond='data:view.isHomepage' locked='false' title='Text' type='Text'>
+                        <b:widget-settings>
+                            <b:widget-setting name='content'>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</b:widget-setting>
+                            </b:widget-settings>
+                        <b:includable id='main'>
+                        <!-- only display title if it's non-empty -->
+                        <b:if cond='data:title != &quot;&quot;'>
+                            <h5 class='title'><data:title/></h5><hr/>
+                        </b:if>
+                        <div class='widget-content mb-3'>
+                            <data:content/>
+                        </div>
+                        <b:include name='quickedit'/>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+                <!-- Sidebar 2-->
+                <b:section class='sidebar' id='sidebar2' showaddelement='yes'>
+                    <!-- Popular Posts -->
+                    <b:widget id='PopularPosts2' cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"' locked='false' title='Popular Posts' type='PopularPosts'>
+                        <!-- Widget Setting -->
+                        <b:widget-settings>
+                            <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+                            <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                            <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                            <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                        </b:widget-settings>
+                        <!-- Widget layout -->
+                        <b:includable id='main'>
+                            <!-- Widget Tittle -->
                             <b:if cond='data:title != &quot;&quot;'>
                                 <h5><data:title/></h5><hr/>
                             </b:if>
-                        </div>
-                        <div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
-                            <div class="col mb-3 p-0">
-                                <b:loop values='data:labels' var='label'>
-                                    <b:if cond='data:blog.url == data:label.url'>
-                                        <span expr:dir='data:blog.languageDirection'><data:label.name/></span>
-                                    <b:else/>
-                                        <a class="btn btn-outline-dark btn-sm mb-1" role="button" expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
-                                            <i class="bi bi-tag-fill" style="font-size: .8rem; color: secondary;"></i> 
-                                            <data:label.name/>
-                                            <b:if cond='data:showFreqNumbers'>
-                                                <span dir='ltr'>(<data:label.count/>)</span>
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                                <!-- Card Popular posts -->
+                                <b:loop index='i' values='data:posts' var='post'>
+                                    <b:with value='data:post.featuredImage' var='image' >
+                                        <div class="card card-overlay-bottom card-img-scale p-1 border-0">
+                                            <b:if cond='data:i == 1'>
+                                                <div class="col p-0">
+                                                    <img class="card-img h-200 p-0" expr:src='data:image' />
+                                                    <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
+                                                        <!-- Card category -->
+                                                        <div>
+                                                            <b:if cond='data:post.labels' var='label' >
+                                                                <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
+                                                                    <i class="fas fa-circle me-2 small fw-bold"></i>
+                                                                    <data:label.name />
+                                                                </a>
+                                                            </b:if>
+                                                        </div>
+                                                        <div class="w-100 mt-auto">
+                                                            <h5 class="text-white">
+                                                                <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
+                                                                    <data:post.title/>
+                                                                </a>
+                                                            </h5>
+                                                            <p style="text-align: justify; color: white; font-size: 12px;">
+                                                                <b:eval expr='snippet(data:post.snippet, {length: 50})' />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <b:else />
+                                                <div class="col p-0 border-0">    
+                                                    <img class="card-img h-200 p-0" expr:src='data:image' />
+                                                    <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
+                                                        <!-- Card category -->
+                                                        <div>
+                                                            <b:if cond='data:post.labels' var='label' >
+                                                                <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
+                                                                    <i class="fas fa-circle me-2 small fw-bold"></i>
+                                                                    <data:label.name />
+                                                                </a>
+                                                            </b:if>
+                                                        </div>
+                                                        <div class="w-100 mt-auto">
+                                                            <h5 class="text-white">
+                                                                <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
+                                                                    <data:post.title/>
+                                                                </a>
+                                                            </h5>
+                                                            <p style="text-align: justify; color: white; font-size: 12px;">
+                                                                <b:eval expr='snippet(data:post.snippet, {length: 50})' />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </b:if>
-                                        </a>
-                                    </b:if>
+                                        </div>
+                                    </b:with>
                                 </b:loop>
                             </div>
-                        </div>
-                    </b:includable>
-                </b:widget>
-            </b:section>
-            <!-- Sidebar 2-->
-            <b:section class='sidebar' id='sidebar2' showaddelement='yes'>
-                <!-- Side Widget Popular Posts -->
-                <b:widget id='PopularPosts2' locked='false' title='Popular Posts' type='PopularPosts'>
-                    <!-- Widget Setting -->
-                    <b:widget-settings>
-                        <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
-                        <b:widget-setting name='showThumbnails'>true</b:widget-setting>
-                        <b:widget-setting name='showSnippets'>true</b:widget-setting>
-                        <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
-                    </b:widget-settings>
-                    <!-- Widget layout -->
-                    <b:includable id='main'>
-                        <!-- Widget Tittle -->
-                        <b:if cond='data:title != &quot;&quot;'>
-                            <h5><data:title/></h5><hr/>
-                        </b:if>
-                        <div class="col mb-3  p-0 border-0">
-                            <!-- Card Popular posts -->
-                            <b:loop index='i' values='data:posts' var='post'>
-                                <b:with value='data:post.featuredImage' var='image' >
-                                    <div class="card card-overlay-bottom card-img-scale mb-3">
-                                        <b:if cond='data:i == 1'>
-                                            <img class="card-img h-200 p-0" expr:src='data:image' />
-                                            <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
-                                                <!-- Card category -->
-                                                <div>
-                                                    <b:if cond='data:post.labels' var='label' >
-                                                        <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
-                                                            <i class="fas fa-circle me-2 small fw-bold"></i>
-                                                            <data:label.name />
-                                                        </a>
-                                                    </b:if>
-                                                </div>
-                                                <div class="w-100 mt-auto">
-                                                    <h5 class="text-white">
-                                                        <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
-                                                            <data:post.title/>
-                                                        </a>
-                                                    </h5>
-                                                    <p style="text-align: justify; color: white; font-size: 12px;">
-                                                        <b:eval expr='snippet(data:post.snippet, {length: 50})' />
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        
-                                        <b:else />
-                                            
-                                            <img class="card-img h-200 p-0" expr:src='data:image' />
-                                            <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
-                                                <!-- Card category -->
-                                                <div>
-                                                    <b:if cond='data:post.labels' var='label' >
-                                                        <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
-                                                            <i class="fas fa-circle me-2 small fw-bold"></i>
-                                                            <data:label.name />
-                                                        </a>
-                                                    </b:if>
-                                                </div>
-                                                <div class="w-100 mt-auto">
-                                                    <h5 class="text-white">
-                                                        <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
-                                                            <data:post.title/>
-                                                        </a>
-                                                    </h5>
-                                                    <p style="text-align: justify; color: white; font-size: 12px;">
-                                                        <b:eval expr='snippet(data:post.snippet, {length: 50})' />
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </b:if>
-                                    </div>
-                                </b:with>
-                            </b:loop>
-                        </div>
-                    </b:includable>
-                </b:widget>
-            </b:section>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </div>
         </aside>
         <div class='clearfix' />
         <!-- Footer -->
         <footer class='bg-secondary' id='footer-wrapper'>
             <div class="container mt-2">
-                <div class="row row-cols-1 row-cols-md-3 mb-1" style="min-height: 100px; align-content: center;">
-                    <div class="col">
+                <div class="row row-cols-1 row-cols-md-3 mb-1" style="min-height: 200px;">
+                    <div class="col py-3">
                         <b:section class='footer' id='footer1' showaddelement='yes'>
-                            <b:widget id='Text2' locked='false' title='' type='Text'>
+                            <b:widget id='HTML1' locked='false' title='' type='HTML'>
                                 <b:widget-settings>
-                                <b:widget-setting name='content'>
-                                    Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero. Send me a message to youremail@mail.com</b:widget-setting>
+                                    <b:widget-setting name='content'>
+                                        <![CDATA[<p class="text-justify">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero. Send me a message to <a href="#">youremail@mail.com</a></p>]]>
+                                    </b:widget-setting>
                                 </b:widget-settings>
                                 <b:includable id='main'>
                                     <!-- only display title if it's non-empty -->
@@ -592,22 +599,22 @@
                             </b:widget>
                         </b:section>
                     </div>
-                    <div class="col">
+                    <div class="col py-2">
                         <b:section class='footer' id='footer2' showaddelement='yes'>
-                            <b:widget id='HTML1' locked='false' title='' type='HTML'>
+                            <b:widget id='HTML2' locked='false' title='' type='HTML'>
                                 <b:widget-settings>
                                     <b:widget-setting name='content'>
-                                        &lt;p class=&quot;text-center&quot;&gt;Follow me @
+                                        &lt;p&gt;Find Me @
                                         &lt;br/&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-youtube text-danger&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-whatsapp text-success&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-telegram text-info&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-instagram text-danger&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-twitter text-primary&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-facebook text-light&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-linkedin text-info&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-github text-dark&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                                        &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-discord text-warning&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-youtube text-danger&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-whatsapp text-success&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-telegram text-info&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-instagram text-danger&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-twitter text-primary&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-facebook text-light&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-linkedin text-info&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-github text-dark&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-discord text-warning&quot;&gt;&lt;/i&gt;&lt;/a&gt;
                                         &lt;/p&gt;
                                     </b:widget-setting>
                                 </b:widget-settings>
@@ -624,46 +631,35 @@
                             </b:widget>
                         </b:section>
                     </div>
-                    <div class="col">
+                    <div class="col py-2">
                         <b:section class='footer' id='footer3' showaddelement='yes'>
-                        <b:widget id='PageList2' locked='false' title='' type='PageList'>
-                            <b:widget-settings>
-                              <b:widget-setting name='pageListJson'><![CDATA[{'link0': {'href': '#', 'title': 'Privacy Policy', 'position': 0}, 'link1': {'href': '#', 'title': 'Disclaimer', 'position': 1}, 'link2': {'href': '#', 'title': 'Sitemap', 'position': 2}}]]></b:widget-setting>
-                              <b:widget-setting name='homeTitle'>Home</b:widget-setting>
-                            </b:widget-settings>
-                            <b:includable id='main'>
-                                <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
-                                <div class='widget-content'>
-                                    <b:if cond='data:mobile'>
-                                        <select expr:id='data:widget.instanceId + &quot;_select&quot;'>
-                                            <b:loop values='data:links' var='link'>
-                                            <option expr:value='data:link.href'>
-                                                <b:attr cond='data:link.isCurrentPage' name='selected' value='selected'/>
-                                                <data:link.title/>
-                                            </option>
-                                            </b:loop>
-                                        </select>
-                                        <span class='pagelist-arrow'>&amp;#9660;</span>
-                                        <b:else/>
-                                        <ul>
-                                            <b:loop values='data:links' var='link'>
-                                            <li>
-                                                <b:class cond='data:link.isCurrentPage' name='selected'/>
-                                                <a class='text-white' expr:href='data:link.href'><data:link.title/></a>
-                                            </li>
-                                            </b:loop>
-                                        </ul>
+                            <b:widget id='HTML3' locked='false' title='' type='HTML'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>
+                                        &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Privacy Police&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Disclaimer&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sitemap&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    </b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                    <!-- only display title if it's non-empty -->
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <h2 class='title'><data:title/></h2>
                                     </b:if>
+                                    <div class='widget-content'>
+                                        <data:content/>
+                                    </div>
                                     <b:include name='quickedit'/>
-                                </div>
-                            </b:includable>
-                          </b:widget>
+                                </b:includable>
+                            </b:widget>
                         </b:section>
                     </div>  
                 </div> 
             </div>
-            <div class='col py-3 bg-dark text-center text-white'>
-                <p>&#169; 2021 | with <i class="bi bi-heart-fill text-danger"></i> by <a class='text-white' href='https://bgs.web.id'><data:blog.title/></a></p>
+            <div class='col py-3 bg-dark text-center'>
+                <p style='font-size: .8rem;'>&#169; 2021 | with <i class="bi bi-heart-fill text-danger"></i> by <a class='text-white' href='https://bgs.web.id'><data:blog.title/></a></p>
             </div>
         </footer>
         
