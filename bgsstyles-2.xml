@@ -28,9 +28,11 @@
             background-image: url('https://i.postimg.cc/mrdmwwzz/bgimg-nasgor.jpg');
             background-attachment: fixed;
             background-size: cover;
-            background-position: 0 -100px center;
-            color: #eaeaea;
+            background-position: 0 -150px center;
+            background-color: dark-grey;
+            color: white;
             overflow: hidden;
+            padding: 0;
         }
 
         .jumbotron img  {
@@ -39,6 +41,57 @@
 
         .jumbotron h1, .jumbotron p {
             text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+        }
+
+        /* The overlay effect - lays on top of the container and over the jumbotron */
+        .jumbotron-overlay {
+            position: absolute;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5); /* Black see-through */
+            width: 100%;
+            height: 500px;
+            transition: .5s ease;
+            opacity: 0.7;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 64px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .jumbotron:hover .jumbotron-overlay {
+            opacity: 1;
+        }
+
+        .breadcrumbs {
+            background:#fff;
+            line-height:1.2em;
+            width:auto;
+            overflow:hidden;
+            margin:0;
+            padding:10px 0;
+            border-top:1px solid #dedede;
+            border-bottom:1px solid #dedede;
+            font-size:80%;
+            color:Black;
+            font-weight:400;
+            text-overflow:ellipsis;
+            -webkit-text-overflow:ellipsis;
+            white-space:nowrap
+        }
+
+        .breadcrumbs a {
+            display:inline-block;
+            text-decoration:none;
+            transition:all .3s ease-in-out;
+            color:Gray;
+            font-weight:400;
+        }
+
+        .breadcrumbs a:hover {
+            color:Lime;
         }
 
         .card p {
@@ -79,14 +132,16 @@
                     <b:includable id='main'>
                         <b:if cond='data:view.isHomepage'>
                             <div class="jumbotron jumbotron-fluid" style="background-image: url('https://i.postimg.cc/mrdmwwzz/bgimg-nasgor.jpg');">
-                                <div class="container text-center">
-                                    <img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" width="20%"/>
-                                    <b:if cond='data:title != &quot;&quot;'>
-                                        <h1 class="display-4"><data:title/></h1>
-                                    </b:if>
-                                    <b:if cond='data:description != &quot;&quot;'>
-                                        <p class='description'><span><data:description/></span></p>
-                                    </b:if>
+                                <div class="jumbotron-overlay">
+                                    <div class="container">
+                                        <img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" width="20%"/>
+                                        <b:if cond='data:title != &quot;&quot;'>
+                                            <h1 class="display-4"><data:title/></h1>
+                                        </b:if>
+                                        <b:if cond='data:description != &quot;&quot;'>
+                                            <p class='description'><span><data:description/></span></p>
+                                        </b:if>
+                                    </div>
                                 </div>
                             </div>
                         </b:if>
@@ -301,6 +356,14 @@
                                 <b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/>
                             </div>
                         </b:if>
+                        <!-- Redirect error 404 to homepage -->
+                        <b:if cond='data:view.isError'>
+                            <script>
+                                setTimeout(function () {
+                                window.location.replace(&quot;<data:blog.homepageUrl/>&quot;);
+                                    });
+                            </script>
+                        </b:if>                        
                         <!-- Display title on homepage -->
                         <b:if cond='data:posts.any and data:view.isHomepage'>
                             <div class="container">
@@ -330,26 +393,33 @@
                     <b:includable id='index' var='post'>
                         <div class='card mb-4 border-0'>
                             <small class='text-muted'>
-                                <span class="timestamp"> 
-                                    <data:post.timestamp />
-                                </span>
-                                in 
-                                <b:if cond='data:post.labels'>
-                                    <b:loop values='data:post.labels' var='label'>
-                                        <a class='text-secondary' expr:href='data:label.url' rel='tag'>
-                                            <data:label.name />
-                                        </a>
-                                    </b:loop>
-                                </b:if>
+                                <data:post.dateHeader />
                             </small>
                             <a expr:href='data:post.url' class='stretched-link text-reset'>
                                 <h5 class='card-title'>
                                     <data:post.title />
                                 </h5>
                             </a>
-                            <b:if cond='data:post.firstImageUrl'>
-                                <img class='card-img-top' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
-                            </b:if>
+                            <div class="position-relative">
+                                <b:if cond='data:post.firstImageUrl'>
+                                    <img class='card-img' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
+                                </b:if>
+                                <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                    <div class="w-100 mt-auto">
+                                        <small class='text-muted'>
+                                            <b:if cond='data:post.labels'>
+                                                <b:loop values='data:post.labels' var='label'>
+                                                    <span class='badge badge-secondary'>
+                                                        <a class='text-white' expr:href='data:label.url' rel='tag'>
+                                                            <i class="bi bi-tag-fill" style="font-size: .5rem;"></i> <data:label.name />
+                                                        </a>
+                                                    </span>
+                                                </b:loop>
+                                            </b:if>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
                             <div class='card-body border-bottom px-0'>
                                 <p class='card-text'>
                                     <b:eval expr='snippet(data:post.snippet, {length: 100})' />
@@ -363,51 +433,72 @@
                         <b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
                             <!-- Start Post -->
                             <div class="jumbotron jumbotron-fluid" expr:style='&quot;background-image:url(\&quot;&quot; + data:post.firstImageUrl+ &quot;\&quot;); &quot;'>
-                                <div class="container text-center">
-                                    <h1 style="font-size:5rem; padding-top:140px;">
-                                        <data:post.title />
-                                    </h1>
+                                <div class="jumbotron-overlay">
+                                    <div class="container text-center">
+                                        <h1 class="display-4">
+                                            <data:post.title />
+                                        </h1>
+                                    </div>
                                 </div>
                             </div>
                             <div class="container">
                                 <!-- Writer and Post Date -->
                                 <b:if cond='data:blog.pageType == "item"'>
-                                    <div class='card-body mb-0 pb-0'>
+                                    <div class='card-body my-0 py-0'>
+                                        <!-- breadcrumb -->
+                                        <b:include data='posts' name='breadcrumb'/>
                                         <span class='card-text'>
                                             <small class='text-muted'>
-                                                <!-- timestamp -->
-                                                <b:if cond='data:post.timestamp'>
-                                                    <data:post.author /> &#8226; 
-                                                    <data:post.timestamp /> 
-                                                </b:if>
-                                                <!-- Label -->
-                                                <b:if cond='data:post.labels'>
-                                                    <b:loop values='data:post.labels' var='label'>
-                                                        <span class='badge badge-secondary'>
-                                                            <a class='text-white' expr:href='data:label.url' rel='tag'>
-                                                                <data:label.name />
-                                                            </a>
-                                                        </span>
-                                                    </b:loop>
-                                                </b:if>
+                                                <!-- dateHeader -->
+                                                <i class="bi bi-person-circle"></i> <data:post.author /> <i class="bi bi-calendar3"></i> <data:post.dateHeader /> 
                                             </small>
                                         </span>
-                                        <hr />
                                     </div>
                                 </b:if>
                                 <!-- Post Content Container -->
-                                <div class='card-body pt-0 mt-0' expr:id='&quot;post-body-&quot; + data:post.id'
+                                <div class='card-body' expr:id='&quot;post-body-&quot; + data:post.id'
                                     expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
                                     <data:post.body />
                                 </div>
-                                <!-- End Post -->
-                                <b:include name='nextprev' />
-                                <div class="card p-3 mb-3">
+                                <div class="card-footer">
+                                    <!-- Next or Prev -->
+                                    <b:include name='nextprev' />
+                                </div>
+                                <div class="card p-3 border-0">
                                     <b:include data='post' name='comment_picker' />
                                 </div>
                             </div>
                         </b:if>
                     </b:includable>
+                    <!-- Breadcrumb -->
+                    <b:includable id='breadcrumb' var='posts'>
+                        <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                            <b:loop values='data:posts' var='post'>
+                                <b:if cond='data:post.labels'>
+                                    <div class='breadcrumbs' itemscope='itemscope' itemtype='https://schema.org/BreadcrumbList'>
+                                        <i class="bi bi-house-door"></i>
+                                        <span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+                                            <a expr:href='data:blog.homepageUrl' title='Home' itemprop='item'>
+                                                <span itemprop='name'>Home</span>
+                                            </a>
+                                            <meta content='1' itemprop='position'/>
+                                        </span>
+                                        <i class="bi bi-tags"></i>
+                                        <b:loop index='num' values='data:post.labels' var='label'>
+											<span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+                                                <a expr:href='data:label.url + &quot;?&amp;max-results=9&quot;' expr:title='data:label.name' itemprop='item'>
+                                                    <span itemprop='name'><data:label.name/></span>
+                                                </a>
+                                                <meta expr:content='data:num+2' itemprop='position'/>
+                                            </span>
+                                            <i class="bi bi-chevron-right"></i>
+                                        </b:loop>
+                                        <span><data:post.title/></span>
+                                    </div>
+                                </b:if>
+                            </b:loop>
+                        </b:if>
+                    </b:includable>   
                     <!-- Navigation -->
                     <b:includable id='nextprev'>
                         <div class='d-flex justify-content-between mb-3'>
@@ -474,33 +565,17 @@
                             </div>
                         </b:includable>
                     </b:widget>
-                    <!-- Text -->
-                    <b:widget id='Text1' cond='data:view.isHomepage' locked='false' title='Text' type='Text'>
-                        <b:widget-settings>
-                            <b:widget-setting name='content'>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</b:widget-setting>
-                            </b:widget-settings>
-                        <b:includable id='main'>
-                        <!-- only display title if it's non-empty -->
-                        <b:if cond='data:title != &quot;&quot;'>
-                            <h5 class='title'><data:title/></h5><hr/>
-                        </b:if>
-                        <div class='widget-content mb-3'>
-                            <data:content/>
-                        </div>
-                        <b:include name='quickedit'/>
-                        </b:includable>
-                    </b:widget>
                 </b:section>
                 <!-- Sidebar 2-->
                 <b:section class='sidebar' id='sidebar2' showaddelement='yes'>
                     <!-- Popular Posts -->
-                    <b:widget id='PopularPosts2' cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"' locked='false' title='Popular Posts' type='PopularPosts'>
+                    <b:widget id='PopularPosts2' cond='data:blog.pageType == "item"' locked='false' title='Popular Posts' type='PopularPosts'>
                         <!-- Widget Setting -->
                         <b:widget-settings>
                             <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
                             <b:widget-setting name='showThumbnails'>true</b:widget-setting>
                             <b:widget-setting name='showSnippets'>true</b:widget-setting>
-                            <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                            <b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
                         </b:widget-settings>
                         <!-- Widget layout -->
                         <b:includable id='main'>
@@ -512,20 +587,11 @@
                                 <!-- Card Popular posts -->
                                 <b:loop index='i' values='data:posts' var='post'>
                                     <b:with value='data:post.featuredImage' var='image' >
-                                        <div class="card card-overlay-bottom card-img-scale p-1 border-0">
+                                        <div class="card card-overlay-bottom card-img-scale p-1 border-0 bg-transparent">
                                             <b:if cond='data:i == 1'>
-                                                <div class="col p-0">
-                                                    <img class="card-img h-200 p-0" expr:src='data:image' />
+                                                <div class="col p-0 border-0">
+                                                    <img class="card-img h-100 p-0" expr:src='data:image' style="filter: brightness(60%)"/>
                                                     <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
-                                                        <!-- Card category -->
-                                                        <div>
-                                                            <b:if cond='data:post.labels' var='label' >
-                                                                <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
-                                                                    <i class="fas fa-circle me-2 small fw-bold"></i>
-                                                                    <data:label.name />
-                                                                </a>
-                                                            </b:if>
-                                                        </div>
                                                         <div class="w-100 mt-auto">
                                                             <h5 class="text-white">
                                                                 <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
@@ -540,17 +606,8 @@
                                                 </div>
                                             <b:else />
                                                 <div class="col p-0 border-0">    
-                                                    <img class="card-img h-200 p-0" expr:src='data:image' />
-                                                    <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
-                                                        <!-- Card category -->
-                                                        <div>
-                                                            <b:if cond='data:post.labels' var='label' >
-                                                                <a expr:href='data:label.url' rel='tag' class="badge bg-warning fs-6 mb-2">
-                                                                    <i class="fas fa-circle me-2 small fw-bold"></i>
-                                                                    <data:label.name />
-                                                                </a>
-                                                            </b:if>
-                                                        </div>
+                                                    <img class="card-img h-100 p-0" expr:src='data:image' style="filter: brightness(60%)" />
+                                                    <div class="card-img-overlay d-flex flex-column p-1 p-sm-4 ">
                                                         <div class="w-100 mt-auto">
                                                             <h5 class="text-white">
                                                                 <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
