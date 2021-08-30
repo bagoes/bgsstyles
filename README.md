@@ -13,23 +13,14 @@ The embbedded gadgets is :
 - Footer
 - etc  
 
-👀 [look at this](https://bgsstyles-1.blogspot.com/){:target="_blank"}  
-📫 [changelog](https://bagoes.github.io/blog/2021/07/25/bgsstyles-1-blogger-theme){:target="_blank"}  
-
-### bsgstyles v2
-This is another project simple blogger theme using framework from bootstrap 4.6.0 and bootstrap-icons 1.5.0.\
-The embbedded gadgets is :
-- Navbar
-- Header Jumbotron
-- Card Featured Post
-- Carousel Popular Posts
-- Masonry Card Main Posts
-- Page Lists
-- Footer
-- etc
-
-👀 [look here](https://bgsstyles.blogspot.com){:target="_blank"}  
-_It will look messy when under construction_  
+👀 [look at this](https://bgsstyles-1.blogspot.com/)  
+📫 [changelog](https://bagoes.github.io/blog/2021/07/25/bgsstyles-1-blogger-theme)  
+  
 
 If you like it, you can use this or want to help me develop this.\
-Contact my [email](mailto:bgs@bgs.web.id)
+Contact my [email](mailto:bgs@bgs.web.id)  
+
+### bsgstyles v2
+Another project simple blogger theme using bootstrap 
+[👀 here](https://bgsstyles.blogspot.com)  
+_It will look messy when under construction_
