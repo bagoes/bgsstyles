@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+    <head>
+        <meta charset='UTF-8' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>
+            <data:view.title.escaped/>
+        </title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+        
+        <b:skin>
+            <![CDATA[
+        *{
+            font-family: sans-serif;
+        }
+
+        a:link {
+        text-decoration: none;
+        }
+
+        .jumbotron {
+            height: 500px;
+            background-image: url('https://i.postimg.cc/mrdmwwzz/bgimg-nasgor.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: 0 -150px center;
+            background-color: dark-grey;
+            color: white;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .jumbotron img  {
+            width: 200px;
+        }
+
+        .jumbotron h1, .jumbotron p {
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+        }
+
+        /* The overlay effect - lays on top of the container and over the jumbotron */
+        .jumbotron-overlay {
+            position: absolute;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5); /* Black see-through */
+            width: 100%;
+            height: 500px;
+            transition: .5s ease;
+            opacity: 0.7;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 64px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .jumbotron:hover .jumbotron-overlay {
+            opacity: 1;
+        }
+
+        .breadcrumbs {
+            background:#fff;
+            line-height:1.2em;
+            width:auto;
+            overflow:hidden;
+            margin:0;
+            padding:10px 0;
+            border-top:1px solid #dedede;
+            border-bottom:1px solid #dedede;
+            font-size:80%;
+            color:Black;
+            font-weight:400;
+            text-overflow:ellipsis;
+            -webkit-text-overflow:ellipsis;
+            white-space:nowrap
+        }
+
+        .breadcrumbs a {
+            display:inline-block;
+            text-decoration:none;
+            transition:all .3s ease-in-out;
+            color:Gray;
+            font-weight:400;
+        }
+
+        .breadcrumbs a:hover {
+            color:Lime;
+        }
+
+        .card p {
+            text-align: justify;
+        }
+
+        .bi {
+            font-size: 1rem;
+            text-align: center;
+            color: secondary;
+        }
+
+        footer p, footer a {
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 767.98px) {
+            footer p,
+            footer ul li {
+                text-align: center;
+            }
+        }
+
+        ]]>
+        </b:skin>
+
+    </head>
+
+    <body>
+        
+        <header id='header-wrapper'>
+            <b:section class='header' id='header' maxwidgets='2'>
+                <!-- Jumbotron -->
+                <b:widget id='Header1' locked='true'  title='Basic Blogger Template (Header)' type='Header'>
+                    <b:widget-settings>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                        <b:if cond='data:view.isHomepage'>
+                            <div class="jumbotron jumbotron-fluid" style="background-image: url('https://i.postimg.cc/mrdmwwzz/bgimg-nasgor.jpg');">
+                                <div class="jumbotron-overlay">
+                                    <div class="container">
+                                        <img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" width="20%"/>
+                                        <b:if cond='data:title != &quot;&quot;'>
+                                            <h1 class="display-4"><data:title/></h1>
+                                        </b:if>
+                                        <b:if cond='data:description != &quot;&quot;'>
+                                            <p class='description'><span><data:description/></span></p>
+                                        </b:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </b:if>
+                    </b:includable>
+                    <b:includable id='title'>
+                        <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+                            <h1 class="display-4"><data:title/></h1>
+                        </b:tag>
+                    </b:includable>
+                    <b:includable id='description'>
+                        <div class='descriptionwrapper'>
+                            <p class='description'><span><data:description/></span></p>
+                        </div>
+                    </b:includable>
+                </b:widget>
+                <!-- Navbar -->
+                <b:widget id='PageList1' locked='false' title='' type='PageList'>
+                    <b:widget-settings>
+                        <b:widget-setting name='pageListJson'><![CDATA[{'link0': {'href': 'http://bgsstyles.blogspot.com/', 'title': 'Home', 'position': 0}, '2557119442012159578': {'href': 'https://bgsstyles.blogspot.com/p/about.html', 'title': 'About', 'position': 1}}]]></b:widget-setting>
+                        <b:widget-setting name='homeTitle'>Home</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-transparent" id="navbar">
+                            <div class="container-md">
+                                <!-- Logo -->
+                                <a class="navbar-brand" expr:href="data:blog.homepageUrl"><img
+                                        src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" height="30" class="d-inline-block align-top"
+                                        expr:alt='data:blog.title' /></a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse widget-content" id="navbarSupportedContent">
+                                    <b:if cond='data:mobile'>
+                                        <select expr:id='data:widget.instanceId + &quot;_select&quot;'>
+                                            <b:loop values='data:links' var='link'>
+                                            <option expr:value='data:link.href'>
+                                                <b:attr cond='data:link.isCurrentPage' name='selected' value='selected'/>
+                                                <data:link.title/>
+                                            </option>
+                                            </b:loop>
+                                        </select>
+                                        <span class='pagelist-arrow'>&amp;#9660;</span>
+                                    <b:else/>
+                                        <ul class="navbar-nav mr-auto float-right">
+                                            <b:loop values='data:links' var='link'>
+                                                <li class="nav-item active">
+                                                    <b:class cond='data:link.isCurrentPage' name='selected'/>
+                                                    <a class="nav-link" expr:href='data:link.href'><data:link.title/><span class="sr-only">(current)</span></a>
+                                                </li>
+                                            </b:loop>
+                                        </ul>
+                                    </b:if>
+                                    <b:include name='quickedit'/>
+                                </div>
+                            </div>
+                        </nav>
+                    </b:includable>
+                </b:widget>
+            </b:section>
+        </header>
+
+        <div class='clearfix' />
+
+        <!-- Main -->
+        <article id='main-wrapper'>
+            <b:section class='main' id='main' name='main' showaddelement='yes' ads='true'>
+                <!-- Widget Featured Post -->
+                <b:widget id='FeaturedPost1' cond='data:view.isHomepage' locked='true' title='Featured Post' type='FeaturedPost' visible='true'>
+                    <!-- Widget Setting -->
+                    <b:widget-settings>
+                        <b:widget-setting name='showSnippet'>true</b:widget-setting>
+                        <b:widget-setting name='showPostTitle'>true</b:widget-setting>
+                        <b:widget-setting name='postId'></b:widget-setting>
+                        <b:widget-setting name='showFirstImage'>true</b:widget-setting>
+                        <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
+                    </b:widget-settings>
+                    <!-- Widget Layout -->
+                    <b:includable id='main'>
+                        <div class="container">
+                            <div class="col-12 mb-5 p-0">
+                                <div class="card h-100 mb-3 border-0">
+                                    <!-- Widget Tittle -->
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <span class="card-header bg-transparent border-0 p-0"><h5><data:title/></h5><hr/></span>
+                                    </b:if>
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4 order-md-last">
+                                            <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+                                            <a expr:href='data:postUrl' class='stretched-link text-reset'>
+                                                <img class='image' style="width:100%" expr:src='data:postFirstImage'/>
+                                                </a>
+                                            </b:if>
+                                        </div>
+                                        <div class="col-md-8 order-md-first">  
+                                            <div class="card-body">
+                                                <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
+                                                    <h5 class="card-title">
+                                                        <a expr:href='data:postUrl' class='stretched-link text-reset'><data:postTitle/></a>
+                                                    </h5>
+                                                </b:if>
+                                                <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
+                                                    <p class="card-text">
+                                                        <b:eval expr='snippet(data:postSummary, {length: 200})' />
+                                                    </p>
+                                                </b:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </b:includable>
+                </b:widget>
+
+                <!-- Widget Carousel -->
+                <b:widget id='PopularPosts1' cond='data:view.isHomepage' locked='true' title='Popular Posts' type='PopularPosts' version='1' visible='true'>
+                    <b:widget-settings>
+                        <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+                        <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                        <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                        <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                    </b:widget-settings>
+                    <!-- Widget Layout -->
+                    <b:includable id='main'>
+                        <div class="container">
+                            <div class="col-12 mb-5 p-0">
+                                <div class='carousel slide mb-3 card h-100 border-0' data-ride='carousel' id='carouselExampleInterval'>
+                                    <!-- Widget Title -->
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <span class="card-header bg-transparent border-0 p-0"><h5><data:title/></h5><hr/></span>
+                                    </b:if>
+                                    <div class="carousel-inner">
+                                        <b:loop index='i' values='data:posts' var='post'>
+                                            <b:with value='data:post.featuredImage' var='image'>
+                                                <b:if cond='data:i == 1'>
+                                                    <a class='carousel-item active text-reset' data-interval='5000' expr:href='data:post.href'>
+                                                        <div class="row no-gutter">
+                                                            <div class="col-md-4">
+                                                                <img class='d-block w-100 p-0 card-img-top' expr:src='data:image' />
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">
+                                                                        <data:post.title />
+                                                                    </h5>
+                                                                    <p class='card-text'>
+                                                                        <b:eval expr='snippet(data:post.snippet, {length: 200})' />
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <b:else />
+                                                    <a class='carousel-item text-reset' data-interval='5000' expr:href='data:post.href'>
+                                                        <div class="row no-gutter">
+                                                            <div class="col-md-4">
+                                                                <img class='d-block w-100 p-0 card-img-top' expr:src='data:image' />
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">
+                                                                        <data:post.title />
+                                                                    </h5>
+                                                                    <p class='card-text'>
+                                                                        <b:eval expr='snippet(data:post.snippet, {length: 200})' />
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </b:if>
+                                            </b:with>
+                                        </b:loop>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </b:includable>
+                </b:widget>
+
+                <!-- Blog Posts -->
+                <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+                    <b:widget-settings>
+                        <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+                        <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+                        <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+                        <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+                        <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+                        <b:widget-setting name='showAuthor'>true</b:widget-setting>
+                        <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+                        <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+                        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+                        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+                        <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+                        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+                        <b:widget-setting name='showLabels'>true</b:widget-setting>
+                        <b:widget-setting name='showLocation'>false</b:widget-setting>
+                        <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+                        <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+                        <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+                        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+                        <b:widget-setting name='showInlineAds'>true</b:widget-setting>
+                        <b:widget-setting name='showReactions'>false</b:widget-setting>
+                    </b:widget-settings>
+                    <!-- Main Layout -->
+                    <b:includable id='main'>
+                        <!-- Search No Results -->
+                        <b:if cond='not data:posts.any'>
+                            <div class='no-posts'>
+                                <b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/>
+                            </div>
+                        </b:if>
+                        <!-- Redirect error 404 to homepage -->
+                        <b:if cond='data:view.isError'>
+                            <script>
+                                setTimeout(function () {
+                                window.location.replace(&quot;<data:blog.homepageUrl/>&quot;);
+                                    });
+                            </script>
+                        </b:if>                        
+                        <!-- Display title on homepage -->
+                        <b:if cond='data:posts.any and data:view.isHomepage'>
+                            <div class="container">
+                                <div class="col-lg-12 p-0">
+                                    <h5 class='title'><data:messages.latestPosts/></h5><hr/>
+                                </div>
+                            </div>
+                        </b:if>
+                        <!-- Include Index -->
+                        <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                            <div class="container">
+                                <div class='card-columns'>
+                                    <b:loop values='data:posts' var='post'>
+                                        <b:include data='post' name='index' />
+                                    </b:loop>
+                                </div>
+                                <!-- Include Navigation -->
+                                <b:include name='nextprev' />
+                            </div>
+                        </b:if>
+                        <!-- Include Post -->
+                        <b:loop values='data:posts' var='post'>
+                            <b:include data='post' name='post' />
+                        </b:loop>
+                    </b:includable>
+                    <!-- Index -->
+                    <b:includable id='index' var='post'>
+                        <div class='card mb-4 border-0'>
+                            <small class='text-muted'>
+                                <data:post.dateHeader />
+                            </small>
+                            <a expr:href='data:post.url' class='stretched-link text-reset'>
+                                <h5 class='card-title'>
+                                    <data:post.title />
+                                </h5>
+                            </a>
+                            <div class="position-relative">
+                                <b:if cond='data:post.firstImageUrl'>
+                                    <img class='card-img' expr:alt='data:post.title' expr:src='data:post.firstImageUrl' />
+                                </b:if>
+                                <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                    <div class="w-100 mt-auto">
+                                        <small class='text-muted'>
+                                            <b:if cond='data:post.labels'>
+                                                <b:loop values='data:post.labels' var='label'>
+                                                    <span class='badge badge-secondary'>
+                                                        <a class='text-white' expr:href='data:label.url' rel='tag'>
+                                                            <i class="bi bi-tag-fill" style="font-size: .5rem;"></i> <data:label.name />
+                                                        </a>
+                                                    </span>
+                                                </b:loop>
+                                            </b:if>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='card-body border-bottom px-0'>
+                                <p class='card-text'>
+                                    <b:eval expr='snippet(data:post.snippet, {length: 100})' />
+                                </p>
+                            </div>
+                        </div>
+                    </b:includable>
+                    <!-- Post -->
+                    <b:includable id='post' var='post'>
+                        <!-- Page -->
+                        <b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
+                            <!-- Start Post -->
+                            <div class="jumbotron jumbotron-fluid" expr:style='&quot;background-image:url(\&quot;&quot; + data:post.firstImageUrl+ &quot;\&quot;); &quot;'>
+                                <div class="jumbotron-overlay">
+                                    <div class="container text-center">
+                                        <h1 class="display-4">
+                                            <data:post.title />
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <!-- Writer and Post Date -->
+                                <b:if cond='data:blog.pageType == "item"'>
+                                    <div class='card-body my-0 py-0'>
+                                        <!-- breadcrumb -->
+                                        <b:include data='posts' name='breadcrumb'/>
+                                        <span class='card-text'>
+                                            <small class='text-muted'>
+                                                <!-- dateHeader -->
+                                                <i class="bi bi-person-circle"></i> <data:post.author /> <i class="bi bi-calendar3"></i> <data:post.dateHeader /> 
+                                            </small>
+                                        </span>
+                                    </div>
+                                </b:if>
+                                <!-- Post Content Container -->
+                                <div class='card-body' expr:id='&quot;post-body-&quot; + data:post.id'
+                                    expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+                                    <data:post.body />
+                                </div>
+                                <div class="card-footer">
+                                    <!-- Next or Prev -->
+                                    <b:include name='nextprev' />
+                                </div>
+                                <div class="card p-3 border-0">
+                                    <b:include data='post' name='comment_picker' />
+                                </div>
+                            </div>
+                        </b:if>
+                    </b:includable>
+                    <!-- Breadcrumb -->
+                    <b:includable id='breadcrumb' var='posts'>
+                        <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                            <b:loop values='data:posts' var='post'>
+                                <b:if cond='data:post.labels'>
+                                    <div class='breadcrumbs' itemscope='itemscope' itemtype='https://schema.org/BreadcrumbList'>
+                                        <i class="bi bi-house-door"></i>
+                                        <span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+                                            <a expr:href='data:blog.homepageUrl' title='Home' itemprop='item'>
+                                                <span itemprop='name'>Home</span>
+                                            </a>
+                                            <meta content='1' itemprop='position'/>
+                                        </span>
+                                        <i class="bi bi-tags"></i>
+                                        <b:loop index='num' values='data:post.labels' var='label'>
+											<span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+                                                <a expr:href='data:label.url + &quot;?&amp;max-results=9&quot;' expr:title='data:label.name' itemprop='item'>
+                                                    <span itemprop='name'><data:label.name/></span>
+                                                </a>
+                                                <meta expr:content='data:num+2' itemprop='position'/>
+                                            </span>
+                                            <i class="bi bi-chevron-right"></i>
+                                        </b:loop>
+                                        <span><data:post.title/></span>
+                                    </div>
+                                </b:if>
+                            </b:loop>
+                        </b:if>
+                    </b:includable>   
+                    <!-- Navigation -->
+                    <b:includable id='nextprev'>
+                        <div class='d-flex justify-content-between mb-3'>
+                            <b:if cond='data:newerPageUrl'>
+                                <a expr:href='data:newerPageUrl'
+                                    expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
+                                    expr:title='data:newerPageTitle'>
+                                    <button type="button" class="btn btn-outline-dark">
+                                        <data:newerPageTitle />
+                                    </button>
+                                </a>
+                            </b:if>
+                            <b:if cond='data:olderPageUrl'>
+                                <a expr:href='data:olderPageUrl'
+                                    expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+                                    expr:title='data:olderPageTitle'>
+                                    <button type="button" class="btn btn-outline-dark">
+                                        <data:olderPageTitle />
+                                    </button>
+                                </a>
+                            </b:if>
+                        </div>
+                    </b:includable>
+                </b:widget>
+            </b:section>
+        </article>
+        <div class='clearfix' />
+        
+        <aside class='col-12 bg-light' id='sidebar-wrapper'>
+            <div class="container py-3">
+                <!-- Sidebar 1-->
+                <b:section class='sidebar' id='sidebar1' showaddelement='yes'>
+                    <!-- Label -->
+                    <b:widget id='Label1' cond='data:view.isHomepage' locked='yes' title='Label' type='Label'>
+                        <b:widget-settings>
+                            <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+                            <b:widget-setting name='display'>LIST</b:widget-setting>
+                            <b:widget-setting name='selectedLabelsList'/>
+                            <b:widget-setting name='showType'>ALL</b:widget-setting>
+                            <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+                        </b:widget-settings>
+                        <b:includable id='main'>
+                            <div class="col mb-3 p-0">
+                                <b:if cond='data:title != &quot;&quot;'>
+                                    <h5><data:title/></h5><hr/>
+                                </b:if>
+                            </div>
+                            <div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
+                                <div class="col mb-3 p-0">
+                                    <b:loop values='data:labels' var='label'>
+                                        <b:if cond='data:blog.url == data:label.url'>
+                                            <span expr:dir='data:blog.languageDirection'><data:label.name/></span>
+                                        <b:else/>
+                                            <a class="btn btn-outline-dark btn-sm mb-1" role="button" expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
+                                                <i class="bi bi-tag-fill" style="font-size: .8rem; color: secondary;"></i> 
+                                                <data:label.name/>
+                                                <b:if cond='data:showFreqNumbers'>
+                                                    <span dir='ltr'>(<data:label.count/>)</span>
+                                                </b:if>
+                                            </a>
+                                        </b:if>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+                <!-- Sidebar 2-->
+                <b:section class='sidebar' id='sidebar2' showaddelement='yes'>
+                    <!-- Popular Posts -->
+                    <b:widget id='PopularPosts2' cond='data:blog.pageType == "item"' locked='false' title='Popular Posts' type='PopularPosts'>
+                        <!-- Widget Setting -->
+                        <b:widget-settings>
+                            <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+                            <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                            <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                            <b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
+                        </b:widget-settings>
+                        <!-- Widget layout -->
+                        <b:includable id='main'>
+                            <!-- Widget Tittle -->
+                            <b:if cond='data:title != &quot;&quot;'>
+                                <h5><data:title/></h5><hr/>
+                            </b:if>
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                                <!-- Card Popular posts -->
+                                <b:loop index='i' values='data:posts' var='post'>
+                                    <b:with value='data:post.featuredImage' var='image' >
+                                        <div class="card card-overlay-bottom card-img-scale p-1 border-0 bg-transparent">
+                                            <b:if cond='data:i == 1'>
+                                                <div class="col p-0 border-0">
+                                                    <img class="card-img h-100 p-0" expr:src='data:image' style="filter: brightness(60%)"/>
+                                                    <div class="card-img-overlay d-flex flex-column p-1 p-sm-4">
+                                                        <div class="w-100 mt-auto">
+                                                            <h5 class="text-white">
+                                                                <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
+                                                                    <data:post.title/>
+                                                                </a>
+                                                            </h5>
+                                                            <p style="text-align: justify; color: white; font-size: 12px;">
+                                                                <b:eval expr='snippet(data:post.snippet, {length: 50})' />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <b:else />
+                                                <div class="col p-0 border-0">    
+                                                    <img class="card-img h-100 p-0" expr:src='data:image' style="filter: brightness(60%)" />
+                                                    <div class="card-img-overlay d-flex flex-column p-1 p-sm-4 ">
+                                                        <div class="w-100 mt-auto">
+                                                            <h5 class="text-white">
+                                                                <a expr:href='data:post.href' class="btn-link text-reset stretched-link">
+                                                                    <data:post.title/>
+                                                                </a>
+                                                            </h5>
+                                                            <p style="text-align: justify; color: white; font-size: 12px;">
+                                                                <b:eval expr='snippet(data:post.snippet, {length: 50})' />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </b:if>
+                                        </div>
+                                    </b:with>
+                                </b:loop>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </div>
+        </aside>
+        <div class='clearfix' />
+        <!-- Footer -->
+        <footer class='bg-secondary' id='footer-wrapper'>
+            <div class="container mt-2">
+                <div class="row row-cols-1 row-cols-md-3 mb-1" style="min-height: 200px;">
+                    <div class="col py-3">
+                        <b:section class='footer' id='footer1' showaddelement='yes'>
+                            <b:widget id='HTML1' locked='false' title='' type='HTML'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>
+                                        <![CDATA[<p class="text-justify">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero. Send me a message to <a href="#">youremail@mail.com</a></p>]]>
+                                    </b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                    <!-- only display title if it's non-empty -->
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <h2 class='title'><data:title/></h2>
+                                    </b:if>
+                                    <div class='widget-content'>
+                                        <data:content/>
+                                    </div>
+                                    <b:include name='quickedit'/>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </div>
+                    <div class="col py-2">
+                        <b:section class='footer' id='footer2' showaddelement='yes'>
+                            <b:widget id='HTML2' locked='false' title='' type='HTML'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>
+                                        &lt;p&gt;Find Me @
+                                        &lt;br/&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-youtube text-danger&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-whatsapp text-success&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-telegram text-info&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-instagram text-danger&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-twitter text-primary&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-facebook text-light&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-linkedin text-info&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-github text-dark&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                            &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;bi bi-discord text-warning&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                                        &lt;/p&gt;
+                                    </b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                    <!-- only display title if it's non-empty -->
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <h2 class='title'><data:title/></h2>
+                                    </b:if>
+                                    <div class='widget-content'>
+                                        <data:content/>
+                                    </div>
+                                    <b:include name='quickedit'/>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </div>
+                    <div class="col py-2">
+                        <b:section class='footer' id='footer3' showaddelement='yes'>
+                            <b:widget id='HTML3' locked='false' title='' type='HTML'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>
+                                        &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Privacy Police&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Disclaimer&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sitemap&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    </b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                    <!-- only display title if it's non-empty -->
+                                    <b:if cond='data:title != &quot;&quot;'>
+                                        <h2 class='title'><data:title/></h2>
+                                    </b:if>
+                                    <div class='widget-content'>
+                                        <data:content/>
+                                    </div>
+                                    <b:include name='quickedit'/>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </div>  
+                </div> 
+            </div>
+            <div class='col py-3 bg-dark text-center'>
+                <p style='font-size: .8rem;'>&#169; 2021 | with <i class="bi bi-heart-fill text-danger"></i> by <a class='text-white' href='https://bgs.web.id'><data:blog.title/></a></p>
+            </div>
+        </footer>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+        <!-- Change style of navbar on scroll -->
+        <script>
+        //<![CDATA[
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var navbar = document.getElementById("navbar");
+            if (document.body.scrollTop >= 500 || document.documentElement.scrollTop >= 500) {
+                navbar.className = "navbar" + " fixed-top" + " navbar-expand-lg" + " navbar-light" + " bg-light";
+            } else if (document.body.scrollTop <= 500 || document.documentElement.scrollTop <= 500) {
+                navbar.className = "navbar" + " fixed-top" + " navbar-expand-lg" + " navbar-dark" + " bg-transparent";
+            } else {
+                navbar.className = navbar.className.replace(" navbar fixed-top navbar-expand-lg navbar-light bg-light", "");
+            }
+        }
+        //]]>
+        </script>
+        <!-- timeAgo Script -->
+        <script>
+        //<![CDATA[
+            //Start function
+                function timeAgo(o){var t=(new Date).getTime()-o.getTime(),e=Math.floor(t/1e3),r=Math.floor(e/60),a=Math.floor(r/60),g=Math.floor(a/24),h=Math.floor(g/30),n=Math.floor(h/12);return 0===t?"Just now":e<60?e+" seconds ago":r<60?r+" minutes ago":a<24?a+" hours ago":g<30?g+" days ago":h<12?h+" months ago":n+" years ago"}
+            //End function
+            
+            $(".timestamp").each(function(){
+            $(this).html(timeAgo(new Date($(this).text())));
+            });
+        //]]>
+        </script>
+
+    </body>
+
+</html>
