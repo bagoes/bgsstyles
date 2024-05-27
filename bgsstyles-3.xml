@@ -1,0 +1,1788 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr' data-bs-theme="dark">
+    <head>
+        <meta charset='UTF-8' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>
+            <data:view.title.escaped/>
+        </title>
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+
+        <!-- Animate On Scroll -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
+		<!-- Prism -->
+		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrownight.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet"/>
+
+        <b:skin>
+        <![CDATA[
+        *{
+            font-family: sans-serif;
+        }
+
+        a:link {
+        text-decoration: none;
+        }
+
+        html {
+			scroll-behavior: smooth;
+		}
+
+		.selector-for-some-widget {
+			box-sizing: content-box;
+		}
+
+		#upBtn {
+			display: none;
+			position: fixed;
+			bottom: 20px;
+			right: 30px; 
+			z-index: 99; 
+			border: none; 
+			outline: none; 
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 10px;
+		}
+		#upBtn i {
+			font-size: 2rem;
+		}
+		#upBtn:hover {
+			transform: translate3d(0, -.125rem, 0);
+		}
+
+		.hover-underline-animation  {
+			display: inline-block;
+			position: relative;
+		}
+		.hover-underline-animation::after   {
+			content: '';
+			position: absolute;
+			width: 100%;
+			transform: scaleX(0);
+			height: 2px;
+			bottom: -2px;
+			left: 0;
+			background-color: #007bff;
+			transform-origin: bottom right;
+			transition: transform 0.25s ease-out;
+		}
+		.hover-underline-animation:hover::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+		.hover-underline-animation.right:hover::after  {
+			transform: scaleX(1);
+			transform-origin: bottom right;
+		}
+
+		/* Media Query */
+		/* Phone */
+		@media (max-width: 575.98px) { 
+			.hero {
+				height: 576px;
+			}
+			.hero-overlay {
+				height: 576px;
+			}
+			.hero img  {
+				width: 150px;
+			}
+			.jumbotron {
+				height: 300px;
+			}
+			.jumbotron-overlay {
+				height: 300px;
+			}
+			.about {
+				font-size: .6rem;
+			}
+			.icons i {
+				font-size: 1rem;
+			}
+			.center-cropped {
+				object-fit:cover;
+				object-position:center; 
+				height: 300px; 
+				width: 300px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		/* Tablet */
+		@media (min-width: 576px) {
+			.hero {
+				height: 768px;
+			}
+			.hero-overlay {
+				height: 768px;
+			}
+			.hero img  {
+				width: 180px;
+			}
+			.jumbotron {
+				height: 400px;
+			}
+			.jumbotron-overlay {
+				height: 400px;
+			}
+			.about {
+				font-size: .7rem;
+			}
+			.icons i {
+				font-size: 1.2rem;
+			}
+			.center-cropped {
+				object-fit:cover;
+				object-position:center; 
+				height: 210px; 
+				width: 210px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		/* Laptop */
+		@media (min-width: 768px) {
+			.hero {
+				height: 992px;
+			}
+			.hero-overlay {
+				height: 992px;
+			}
+			.hero img  {
+				width: 200px;
+			}
+			.jumbotron {
+				height: 500px;
+			}
+			.jumbotron-overlay {
+				height: 500px;
+			}
+			.about {
+				font-size: .8rem;
+			}
+			.icons i {
+				font-size: 1.4rem;
+			}
+			.center-cropped {
+				object-fit:cover;
+				object-position:center; 
+				height: 220px; 
+				width: 220px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		/* Extra Large */
+		@media (min-width: 992px) {
+			.hero {
+				height: 1200px;
+			}
+			.hero-overlay {
+				height: 1200px;
+			}
+			.hero img  {
+				width: 220px;
+			}
+			.jumbotron {
+				height: 600px;
+			}
+			.jumbotron-overlay {
+				height: 600px;
+			}
+			.about {
+				font-size: 1rem;
+			}
+			.icons i {
+				font-size: 1.6rem;
+			}
+			.center-cropped {
+				object-fit:cover;
+				object-position:center; 
+				height: 230px; 
+				width: 230px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.hero {
+			background-image: url('https://i.postimg.cc/mrdmwwzz/bgimg-nasgor.jpg');
+			background-position: center;
+			background-attachment: fixed;
+			background-size: cover;
+			background-color: grey;
+			color: white;
+			overflow: hidden;
+			padding: 0;
+		}
+		.hero h1, .hero p {
+			text-shadow: 1px 1px 10px rgba(0,0,0,0.5);	
+		}
+		.hero-overlay {
+			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 1));
+			opacity: 0.9;
+			width: 100%;
+			transition: .5s ease;
+			color: white;
+			text-align: center;
+			padding-top: 64px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		[data-bs-theme="dark"] {
+			.hero-overlay {
+				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(33, 37, 41, 1));
+			}
+		}
+		.hero:hover .hero-overlay {
+			opacity: 1;
+			backdrop-filter: blur(3px);
+		}
+
+		.jumbotron {
+			background-position: center;
+			background-attachment: fixed;
+			background-size: cover;
+			background-color: grey;
+			color: white;
+			overflow: hidden;
+			padding: 0;
+		}
+		.jumbotron h1, .jumbotron p {
+			text-shadow: 1px 1px 10px rgba(0,0,0,0.5);	
+		}
+		.jumbotron-overlay {
+			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 1));
+			opacity: 0.9;
+			width: 100%;
+			transition: .5s ease;
+			color: white;
+			font-size: 20px;
+			text-align: center;
+			padding-top: 64px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		[data-bs-theme="dark"] {
+			.jumbotron-overlay {
+				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(33, 37, 41, 1));
+			}
+		}
+		.jumbotron:hover .jumbotron-overlay {
+			opacity: 1;
+			backdrop-filter: blur(3px);
+		}
+
+		.about img{
+			filter: drop-shadow(3px 3px 6px black);
+			padding: 15px
+		}
+		.icons a {
+			color: #6c757d;
+		}
+		.bi-telegram:hover {
+			color: #17a2b8;
+		}
+		.bi-instagram:hover {
+			color: #e83e8c;
+		}
+		.bi-twitter:hover {
+			color: #007bff;
+		}
+		.bi-facebook:hover {
+			color: darkblue;
+		}
+		.bi-github:hover {
+			color: #212529;
+		}
+		.bi-rss-fill:hover {
+			color: #ffc107;
+		}
+
+		.main p {
+			text-align: justify;
+		}
+
+		.label .btn-outline-dark {
+			--bs-btn-border-color: transparent;
+		}
+
+		.breadcrumbs {
+			line-height:1.2em;
+			width:auto;
+			overflow:hidden;
+			margin:0;
+			padding:74px 0 10px 0;
+			border-top:1px solid #dedede;
+			border-bottom:1px solid #dedede;
+			font-size:80%;
+			font-weight:400;
+			text-overflow:ellipsis;
+			-webkit-text-overflow:ellipsis;
+			white-space:nowrap
+		}
+		.breadcrumbs a {
+			display:inline-block;
+			text-decoration:none;
+			transition:all .3s ease-in-out;
+			font-weight:400;
+		}
+
+		.card p {
+			text-align: justify;
+		}
+		.hidden-link {
+			opacity: 0;
+			transition: all .5s ease;
+		}
+		.card:hover .hidden-link {
+			opacity: 1;
+		}
+		.card-img-overlay .card-item p {
+			font-size: .8rem;
+			opacity: 0;
+			margin-bottom: -170px;
+			transition: all .5s ease;
+			display: flex;
+			justify-content: flex-end;
+			flex-direction: column;
+			padding: 10px;
+		}
+		.card-item {
+			position: absolute;
+			font-family: sans-serif;
+			backdrop-filter: blur(10px);
+			color: #fff;
+			bottom: 10px;
+			left: 10px;
+			right: 10px;
+			border-radius: 12px;
+			background: rgba(0, 0, 0, 0.2); /* Black see-through */
+		}
+		.card-img-overlay:hover .card-item p {
+			margin-bottom: 0px;
+			opacity: 1;
+		}
+
+		.bi {
+			font-size: .8rem;
+			text-align: center;
+			color: secondary;
+		}
+
+		/*####TOC Plugin V2.0 by MyBloggerTricks####*/
+		.mbtTOC2{border:1px solid #6c757d;box-shadow:1px 1px 0 #EDE396;background-color:#f8f9fa;color:#707037;line-height:1.4em;margin:30px auto;padding:20px 30px 20px 10px; font-family:Oswald, arial;display: block;width: 70%;}.mbtTOC2 button{background:#f8f9fa; font-family:oswald, arial; font-size:22px;position:relative; outline:none;border:none; color:#707037;padding:0 0 0 15px;}.mbtTOC2 button a {color:#0080ff; padding:0px 2px;cursor:pointer;} 
+		.mbtTOC2 button a:hover{ text-decoration:underline; } 
+		.mbtTOC2 button span {font-size:15px; margin:0px 10px; }
+		/*
+		.mbtTOC2 li{margin:10px 0;  } 
+		.mbtTOC2 li a {color:#0080ff; text-decoration:none; font-size:18px; text-transform:capitalize;} 
+		.mbtTOC2 li a:hover {text-decoration: underline;}.mbtTOC2 li li {margin:4px 0px;} 
+		.mbtTOC2 li li a{ color:#289728; font-size:15px;}
+		*/
+		.mbtTOC2 ol{counter-reset:section1;list-style:none}
+		.mbtTOC2 ol ol{counter-reset:section2}
+		.mbtTOC2 ol ol ol{counter-reset:section3}
+		.mbtTOC2 ol ol ol ol{counter-reset:section4}
+		.mbtTOC2 ol ol ol ol ol{counter-reset:section5}
+		.mbtTOC2 li:before{content:counter(section1);counter-increment:section1;position:relative;padding:0 8px 0 0;font-size:18px}
+		.mbtTOC2 li li:before{content:counter(section1) "." counter(section2);counter-increment:section2;font-size:14px}
+		.mbtTOC2 li li li:before{content:counter(section1) "."counter(section2) "." counter(section3);counter-increment:section3}
+		.mbtTOC2 li li li li:before{content:counter(section1) "."counter(section2) "."counter(section3) "." counter(section4);counter-increment:section4}
+		.mbtTOC2 li li li li li:before{content:counter(section1) "."counter(section2) "."counter(section3) "." counter(section4)"." counter(section5);counter-increment:section5}
+		/* 
+		.point2 {list-style-type:lower-alpha} 
+		.point3 {list-style-type:lower-roman} 
+		.point4 {list-style-type:disc} 
+		*/
+
+		pre {
+			tab-size: 2;
+			max-height: 400px;
+			overflow-y: auto;  
+		}
+		
+		#related-post {
+		background:none;
+		width:100%;
+		padding-top:1rem;
+		padding-bottom:1rem;
+		}
+
+		/* Footer */
+		footer p, footer a {
+			text-align: center;
+		}
+
+        ]]>
+        </b:skin>
+
+		<!-- Table Of Content -->
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/>
+		<script type='text/javascript'> 
+		//<![CDATA[ 
+		//*************TOC Plugin V2.0 by MyBloggerTricks.com 
+		function mbtTOC2(){
+				var a=1,c="";
+				document.getElementById("post-toc").innerHTML=document.getElementById("post-toc").innerHTML.replace(/<h([\d]).*?>(.*?)<\/h([\d]).*?>/gi,function(d,e,f,g,){
+						return e!=g?d:(e>a?c+=new Array(e-a+1).join("<ol class='point"+a+"'>"):e<a&&(c+=new Array(a-e+1).join("</ol></li>")),b=f.replace(/\s/g,"_"),c+='<li><a href="#'+b+'">'+f+"</a>",a=parseInt(e),"<h"+e+" id='"+b+"'>"+f+"</h"+g+">")
+				}),a&&(c+=new Array(a+1).join("</ol>")),document.getElementById("mbtTOC2").innerHTML+=c
+		}
+		function mbtToggle2(){
+				var a=document.getElementById("mbtTOC2"),b=document.getElementById("Tog");"none"===a.style.display?(a.style.display="block",b.innerHTML="sembunyikan"):(a.style.display="none",b.innerHTML="tampilkan")
+		}
+		//]]> 
+		</script>
+    </head>
+    	<body data-bs-spy="scroll" data-bs-target="#navbar">
+		<!-- Beranda -->
+		<div id="home">
+			<!-- Awal Header -->
+			<header id='header-wrapper'>
+				<b:section class='header' id='header'>
+					<!-- Awal Hero -->
+					<b:widget id='Header1' locked='true'  title='Basic Blogger Template (Header)' type='Header'>
+						<b:widget-settings>
+						</b:widget-settings>
+						<b:includable id='main'>
+							<b:if cond='data:view.isHomepage'>
+								<div data-aos="fade-in" data-aos-offset="200" data-aos-delay="50" data-aos-duration="3000">
+									<div class="hero">
+										<div class="hero-overlay">
+											<div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">
+												<div class="carousel-inner d-flex align-items-center container" style="height:500px">
+													<div class="carousel-item active" data-bs-interval="3000">
+														<img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" width="100%"/>
+													</div>
+													<div class="carousel-item" data-bs-interval="10000">
+														<div class="card h-100 border-0 bg-transparent text-end text-bg-dark">
+															<div class="row no-gutters">
+																<div class="col-8 my-auto px-4">
+																	<div data-aos="fade-left" data-aos-duration="3000">
+																		<div class="card-body py-5">
+																			<h3 class="card-title">Welcome</h3> 
+																			<p class="card-text text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum qui eligendi quae, assumenda hic sequi?</p>
+																			<p class="card-text text-end"><small class="text-body-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, ea!</small></p>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-4 my-auto text-start">
+																	<div data-aos="fade-right" data-aos-duration="3000">
+																		<i class="bi bi-emoji-laughing" style="font-size: 5rem;"></i>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="carousel-item" data-bs-interval="1000">
+														<b:if cond='data:description != &quot;&quot;'>
+															<p class='description'><data:description/></p>
+														</b:if>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</b:if>
+						</b:includable>
+						<b:includable id='title'>
+							<b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+								<h1 class="display-4"><data:title/></h1>
+							</b:tag>
+						</b:includable>
+						<b:includable id='description'>
+							<div class='descriptionwrapper'>
+								<p class='description'><span><data:description/></span></p>
+							</div>
+						</b:includable>
+					</b:widget>
+					<!-- Akhir Hero -->
+					<!-- Awal Navbar -->
+					<b:widget id='PageList1' locked='true' title='' type='PageList'>
+						<b:widget-settings>
+							<b:widget-setting name='pageListJson'>
+							<![CDATA[{
+								"0":{"href":"data:blog.homepageUrl","position":1,"title":"BGS"},
+								"link0":{"href":"https://www.bgs.web.id/#home","position":2,"title":"Beranda"},
+								"link1":{"href":"https://www.bgs.web.id/#blog","position":3,"title":"Blog"},
+								"link2":{"href":"https://www.bgs.web.id/#label","position":4,"title":"Kategori"},
+								"link3":{"href":"https://www.bgs.web.id/#about","position":5,"title":"Profil"},
+								"link4":{"href":"https://www.bgs.web.id/#gallery","position":6,"title":"Galeri"},
+								"link5":{"href":"https://www.bgs.web.id/#contact","position":7,"title":"Kontak"
+							}}]]>
+							</b:widget-setting>
+							<b:widget-setting name='homeTitle'>Beranda</b:widget-setting>
+						</b:widget-settings>
+						<b:includable id='main'>
+							<!-- Navbar ketika pada halaman statis atau halaman search/label -->
+							<b:if cond='data:blog.pageType == "static_page" or data:blog.searchLabel or data:view.isSearch or data:blog.pageType == "archive"'>
+								<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="navbar">
+									<div class="container-md">
+										<!-- Logo -->
+										<a class="navbar-brand" expr:href="data:blog.homepageUrl">
+											<img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" height="30" class="d-inline-block align-top"
+											expr:alt='data:blog.title' />
+										</a>
+										<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+											data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+											aria-label="Toggle navigation">
+											<span class="navbar-toggler-icon"></span>
+										</button>
+										<div class="collapse navbar-collapse" id="navbarSupportedContent">
+											<b:if cond='data:mobile'>
+												<b:loop values='data:links' var='link'>
+													<option expr:value='data:link.href'>
+														<b:if cond='data:link.isCurrentPage' name='selected'>
+															<a class="nav-link active hover-underline-animation" aria-current="data:link.title" expr:href='data:link.href'><data:link.title/></a>
+														<b:else/>
+															<a class="nav-link hover-underline-animation" expr:href='data:link.href'><data:link.title/></a>
+														</b:if>
+													</option>
+												</b:loop>
+											<b:else/>
+												<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+													<b:loop values='data:links' var='link'>
+														<li class="nav-item ">
+															<b:if cond='data:link.isCurrentPage' name='selected'>
+																<a class="nav-link active hover-underline-animation" aria-current="data:link.title" expr:href='data:link.href'><data:link.title/></a>
+															<b:else/>
+																<a class="nav-link hover-underline-animation" expr:href='data:link.href'><data:link.title/></a>
+															</b:if>
+														</li>
+													</b:loop>
+												</ul>
+												<a class="btn btn-outline-transparent text-secondary" style="box-shadow:none;" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+													<i class="bi bi-search"></i>
+												</a>
+												<div class="collapse" id="collapseExample">
+													<form class="form-inline my-2 my-lg-0" expr:action='data:blog.searchUrl'>
+														<b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+														<input class="form-control-sm mr-sm-2" type="search" placeholder="Pencarian" aria-label="Search" expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+														<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" expr:value='data:messages.search'>Cari</button>
+													</form>
+												</div>
+												<!-- tombol tema -->
+												<div class="dropdown">
+													<button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+														<i class="bi bi-brightness-high-fill theme-icon-active" data-theme-icon-active="bi-brightness-high-fill"></i>
+													</button>
+													<ul class="dropdown-menu dropdown-menu-end">
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="light">
+																<i class="bi bi-brightness-high-fill me-2 opacity-50" data-theme-icon="bi-brightness-high-fill"></i>
+																Light
+															</button>
+														</li>
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="dark">
+																<i class="bi bi-moon-stars-fill me-2 opacity-50" data-theme-icon="bi-moon-stars-fill"></i>
+																Dark
+															</button>
+														</li>
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="auto">
+																<i class="bi bi-circle-half me-2 opacity-50" data-theme-icon="bi-circle-half"></i>
+																Auto
+															</button>
+														</li>
+													</ul>
+												</div>
+											</b:if>
+											<b:include name='quickedit'/>
+										</div>
+									</div>
+								</nav>
+							<!-- Navbar ketika pada halaman posting -->
+							<b:elseif cond='data:blog.pageType == "item"'/>
+								<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" id="navbar">
+									<div class="container-md">
+										<!-- Logo -->
+										<a class="navbar-brand" expr:href="data:blog.homepageUrl">
+											<img src="https://i.postimg.cc/2y1fzyvy/bgs-avatar.png" height="30" class="d-inline-block align-top"
+											expr:alt='data:blog.title' />
+										</a>
+										<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+											data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+											aria-label="Toggle navigation">
+											<span class="navbar-toggler-icon"></span>
+										</button>
+										<div class="collapse navbar-collapse" id="navbarSupportedContent">
+											<b:if cond='data:mobile'>
+												<b:loop values='data:links' var='link'>
+													<option expr:value='data:link.href'>
+														<b:if cond='data:link.isCurrentPage' name='selected'>
+															<a class="nav-link active hover-underline-animation" aria-current="data:link.title" expr:href='data:link.href'><data:link.title/></a>
+														<b:else/>
+															<a class="nav-link hover-underline-animation" expr:href='data:link.href'><data:link.title/></a>
+														</b:if>
+													</option>
+												</b:loop>
+											<b:else/>
+												<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+													<b:loop values='data:links' var='link'>
+														<li class="nav-item ">
+															<b:if cond='data:link.isCurrentPage' name='selected'>
+																<a class="nav-link active hover-underline-animation" aria-current="data:link.title" expr:href='data:link.href'><data:link.title/></a>
+															<b:else/>
+																<a class="nav-link hover-underline-animation" expr:href='data:link.href'><data:link.title/></a>
+															</b:if>
+														</li>
+													</b:loop>
+												</ul>
+												<a class="btn btn-outline-transparent text-secondary" style="box-shadow:none;" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+													<i class="bi bi-search"></i>
+												</a>
+												<div class="collapse" id="collapseExample">
+													<form class="form-inline my-2 my-lg-0" expr:action='data:blog.searchUrl'>
+														<b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+														<input class="form-control-sm mr-sm-2" type="search" placeholder="Pencarian" aria-label="Search" expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+														<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" expr:value='data:messages.search'>Cari</button>
+													</form>
+												</div>
+												<!-- tombol tema -->
+												<div class="dropdown">
+													<button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+														<i class="bi bi-brightness-high-fill theme-icon-active" data-theme-icon-active="bi-brightness-high-fill"></i>
+													</button>
+													<ul class="dropdown-menu dropdown-menu-end">
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="light">
+																<i class="bi bi-brightness-high-fill me-2 opacity-50" data-theme-icon="bi-brightness-high-fill"></i>
+																Light
+															</button>
+														</li>
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="dark">
+																<i class="bi bi-moon-stars-fill me-2 opacity-50" data-theme-icon="bi-moon-stars-fill"></i>
+																Dark
+															</button>
+														</li>
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="auto">
+																<i class="bi bi-circle-half me-2 opacity-50" data-theme-icon="bi-circle-half"></i>
+																Auto
+															</button>
+														</li>
+													</ul>
+												</div>
+											</b:if>
+											<b:include name='quickedit'/>
+										</div>
+									</div>
+								</nav>
+							<!-- Navbar ketika pada halaman lainnya -->
+							<b:else/>
+								<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-transparent" id="navbar">
+									<div class="container-md">
+										<!-- Logo -->
+										<a class="navbar-brand" expr:href="data:blog.homepageUrl">
+											<img src="https://i.postimg.cc/bJ4HZ35q/bgs-inisial-logo-3-01.png" height="30" class="d-inline-block align-top"
+											expr:alt='data:blog.title' />
+										</a>
+										<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+											data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+											aria-label="Toggle navigation">
+											<span class="navbar-toggler-icon"></span>
+										</button>
+										<div class="collapse navbar-collapse" id="navbarSupportedContent">
+											<b:if cond='data:mobile'>
+												<b:loop values='data:links' var='link'>
+													<option expr:value='data:link.href'>
+														<b:if cond='data:link.isCurrentPage' name='selected'>
+															<a class="nav-link active hover-underline-animation" aria-current="data:link.title" expr:href='data:link.href'><data:link.title/></a>
+														<b:else/>
+															<a class="nav-link hover-underline-animation" expr:href='data:link.href'><data:link.title/></a>
+														</b:if>
+													</option>
+												</b:loop>
+											<b:else/>
+												<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+													<b:loop values='data:links' var='link'>
+														<li class="nav-item ">
+															<b:if cond='data:link.isCurrentPage' name='selected'>
+																<a class="nav-link active hover-underline-animation" aria-current="data:link.title" expr:href='data:link.href'><data:link.title/></a>
+															<b:else/>
+																<a class="nav-link hover-underline-animation" expr:href='data:link.href'><data:link.title/></a>
+															</b:if>
+														</li>
+													</b:loop>
+												</ul>
+												<a class="btn btn-outline-transparent text-secondary" style="box-shadow:none;" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+													<i class="bi bi-search"></i>
+												</a>
+												<div class="collapse" id="collapseExample">
+													<form class="form-inline my-2 my-lg-0" expr:action='data:blog.searchUrl'>
+														<b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+														<input class="form-control-sm mr-sm-2" type="search" placeholder="Pencarian" aria-label="Search" expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+														<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" expr:value='data:messages.search'>Cari</button>
+													</form>
+												</div>
+												<!-- tombol tema -->
+												<div class="dropdown">
+													<button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+														<i class="bi bi-brightness-high-fill theme-icon-active" data-theme-icon-active="bi-brightness-high-fill"></i>
+													</button>
+													<ul class="dropdown-menu dropdown-menu-lg-end">
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="light">
+																<i class="bi bi-brightness-high-fill me-2 opacity-50" data-theme-icon="bi-brightness-high-fill"></i>
+																Light
+															</button>
+														</li>
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="dark">
+																<i class="bi bi-moon-stars-fill me-2 opacity-50" data-theme-icon="bi-moon-stars-fill"></i>
+																Dark
+															</button>
+														</li>
+														<li>
+															<button class="dropdown-item d-flex align-item-center" type="button" data-bs-theme-value="auto">
+																<i class="bi bi-circle-half me-2 opacity-50" data-theme-icon="bi-circle-half"></i>
+																Auto
+															</button>
+														</li>
+													</ul>
+												</div>
+											</b:if>
+											<b:include name='quickedit'/>
+										</div>
+									</div>
+								</nav>
+							</b:if>
+						</b:includable>
+					</b:widget>
+					<!-- Akhir Navbar -->
+				</b:section>
+				<a class="icon-link" onclick="topFunction()" id="upBtn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ke Atas">
+					<i class="bi bi-arrow-up-circle"></i>
+				</a>
+			</header>
+			<!-- Akhir Header -->
+		</div>
+		<div class='clearfix' />
+		<!-- Awal Postingan -->
+		<article id='main-wrapper'>
+			<b:section class='main' id='blog' name='main' showaddelement='yes' ads='true'>
+				<!-- Widget Posting Pilihan -->
+				<b:widget id='FeaturedPost1' cond='data:view.isHomepage' locked='false' title='Posting Pilihan' type='FeaturedPost' visible='true'>
+					<b:widget-settings>
+						<b:widget-setting name='showSnippet'>true</b:widget-setting>
+						<b:widget-setting name='showPostTitle'>true</b:widget-setting>
+						<b:widget-setting name='postId'></b:widget-setting>
+						<b:widget-setting name='showFirstImage'>true</b:widget-setting>
+						<b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
+					</b:widget-settings>
+					<b:includable id='main'>
+						<div class="container py-3">
+							<div class="col-12 mb-5 p-0">
+								<div class="card h-100 mb-3 border-0">
+									<b:if cond='data:title != &quot;&quot;'>
+										<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+											<span class="card-header bg-transparent border-0 p-0 text-center">
+												<h3><data:title/></h3><hr/>
+											</span>
+										</div>
+									</b:if>
+									<div class="row no-gutters">
+										<div class="col-md-4 order-md-last">
+											<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+												<b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+													<img class='rounded center-cropped' expr:src='data:postFirstImage'/>
+												<b:else/>
+													<img class='rounded center-cropped' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
+												</b:if>
+											</div>
+										</div>
+										<div class="col-md-8 order-md-first">
+											<div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
+												<div class="card-body text-end py-5">
+													<b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
+														<h4 class="card-title hover-underline-animation">
+															<a expr:href='data:postUrl' class='text-reset'><data:postTitle/></a>
+														</h4>
+													</b:if>
+													<b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
+														<p class="card-text text-end">
+															<b:eval expr='snippet(data:postSummary, {length: 200})' />
+														</p>
+													</b:if>
+													<div class="hidden-link"><small class="text-muted"><a class='hover-underline-animation' expr:href='data:postUrl'><i class="bi bi-book"></i> Baca</a></small></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</b:includable>
+				</b:widget>
+				<!-- Widget Carousel Postingan Populer -->
+				<b:widget id='PopularPosts1' cond='data:view.isHomepage' locked='false' title='Postingan Populer' type='PopularPosts' version='1' visible='true'>
+					<b:widget-settings>
+						<b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+						<b:widget-setting name='showThumbnails'>true</b:widget-setting>
+						<b:widget-setting name='showSnippets'>true</b:widget-setting>
+						<b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
+					</b:widget-settings>
+					<!-- Widget Layout -->
+					<b:includable id='main'>
+						<div class="container">
+							<div class="col-12 p-0">
+								<!-- Widget Title -->
+								<b:if cond='data:title != &quot;&quot;'>
+									<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+										<span class="text-center">
+											<h3><data:title/></h3><hr/>
+										</span>
+									</div>
+								</b:if>
+								<div class='carousel slide mb-3' data-bs-ride='carousel' id='carouselExampleInterval'>
+									<div class="carousel-inner">
+										<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+											<b:loop index='i' values='data:posts' var='post'>
+												<b:with value='data:post.featuredImage' var='image'>
+													<b:if cond='data:i == 1'>
+														<div class='carousel-item active' data-bs-interval='5000'>
+															<div class="row no-gutter">
+																<div class="col-md-4">
+																	<b:if cond='data:image'>
+																		<img class='rounded center-cropped p-0' expr:src='data:image' />
+																	<b:else/>
+																		<img class='rounded center-cropped p-0' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
+																	</b:if>
+																</div>
+																<div class="col-md-8">
+																	<div class="card h-100 border-0">
+																		<div class="card-body py-5">
+																			<h4 class="card-title hover-underline-animation">
+																				<a class="text-reset" expr:href='data:post.href'><data:post.title /></a>
+																			</h4>
+																			<p class='card-text'>
+																				<b:eval expr='snippet(data:post.snippet, {length: 200})' />
+																			</p>
+																			<div class="hidden-link">
+																				<small class="text-muted">
+																					<a class='hover-underline-animation' expr:href='data:post.href'>
+																						<i class="bi bi-book"></i> Baca
+																					</a>
+																				</small>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													<b:else />
+														<div class='carousel-item' data-bs-interval='5000'>
+															<div class="row no-gutter">
+																<div class="col-md-4">
+																	<b:if cond='data:image'>
+																		<img class='rounded center-cropped p-0' expr:src='data:image' />
+																	<b:else/>
+																		<img class='rounded center-cropped p-0' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
+																	</b:if>
+																</div>
+																<div class="col-md-8">
+																	<div class="card h-100 border-0">
+																		<div class="card-body py-5">
+																			<h4 class="card-title hover-underline-animation">
+																				<a class='text-reset' expr:href='data:post.href'><data:post.title /></a>
+																			</h4>
+																			<p class='card-text'>
+																				<b:eval expr='snippet(data:post.snippet, {length: 200})' />
+																			</p>
+																			<div class="hidden-link">
+																				<small class="text-muted">
+																					<a class='hover-underline-animation' expr:href='data:post.href'>
+																						<i class="bi bi-book"></i> Baca
+																					</a>
+																				</small>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</b:if>
+												</b:with>
+											</b:loop>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</b:includable>
+				</b:widget>
+				<!-- Blog Posts -->
+				<b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+					<b:widget-settings>
+						<b:widget-setting name='showDateHeader'>true</b:widget-setting>
+						<b:widget-setting name='showAuthor'>true</b:widget-setting>
+						<b:widget-setting name='showPublishTime'>true</b:widget-setting>
+						<b:widget-setting name='showCommentCount'>false</b:widget-setting>
+						<b:widget-setting name='showLabels'>true</b:widget-setting>
+						<b:widget-setting name='showEmailPostLink'>false</b:widget-setting>
+						<b:widget-setting name='showShareButtons'>true</b:widget-setting>
+						<b:widget-setting name='showLocation'>false</b:widget-setting>
+						<b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+						<b:widget-setting name='showCommentLink'>true</b:widget-setting>
+						<b:widget-setting name='showTimestamp'>true</b:widget-setting>
+						<b:widget-setting name='showBacklinks'>false</b:widget-setting>
+						<b:widget-setting name='showInlineAds'>true</b:widget-setting>
+						<b:widget-setting name='showReactions'>false</b:widget-setting>
+						<b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+						<b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+						<b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+						<b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+						<b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+						<b:widget-setting name='style.layout'>1x1</b:widget-setting>
+						<b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+						<b:widget-setting name='postsPerAd'>1</b:widget-setting>
+						<b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+					</b:widget-settings>
+					<!-- Main Layout -->
+					<b:includable id='main'>
+						<!-- Search No Results -->
+						<b:if cond='not data:posts.any'>
+							<div class='no-posts'>
+								<b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/>
+							</div>
+						</b:if>
+						<!-- Redirect error 404 to homepage -->
+						<b:if cond='data:view.isError'>
+							<script>
+								setTimeout(function () {
+								window.location.replace(&quot;<data:blog.homepageUrl/>&quot;);
+										});
+							</script>
+						</b:if>
+						<!-- display search padding top 5 -->
+						<b:if cond='data:posts.any and data:view.isSearch'>
+							<div class="container" style="padding-top: 4rem!important;">
+								<div class="col-lg-12 p-0 text-center">
+									<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+										<h3 class='title'>Postingan</h3><hr/>
+									</div>
+								</div>
+							</div>
+						</b:if>
+						<!-- homepage -->
+						<b:if cond='data:view.isHomepage'>
+							<div class="container">
+								<div class="col-lg-12 pt-5 text-center">
+									<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+										<h3 class='title'>Postingan Terbaru</h3><hr/>
+									</div>
+								</div>
+							</div>
+						</b:if>
+						<!-- Include Index -->
+						<b:if cond='data:blog.pageType == "index"'>
+							<div class="container">
+								<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5" data-masonry='{"percentPosition": true }'>
+									<b:loop values='data:posts' var='post'>
+										<b:include data='post' name='index' />
+									</b:loop>
+								</div>
+								<!-- Include Navigation -->
+								<b:include name='nextprev' />
+							</div>
+						</b:if>
+						<!-- Include Post -->
+						<b:loop values='data:posts' var='post'>
+							<b:include data='post' name='post' />
+						</b:loop>
+					</b:includable>
+					<!-- Index Masonry Grid Layout -->
+					<b:includable id='index' var='post'>
+						<div class='col'>
+							<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+								<div class='card border-0'>
+									<div class="card-header" expr:style='&quot;background-image:url(\&quot;&quot; + data:post.firstImageUrl+ &quot;\&quot;); background-position: center; background-size: cover; height: 100px;&quot;'>
+										<div class="position-relative" style="background-color: rgba(0,0,0, 0.9);">
+											<div class="position-absolute top-0 start-0">
+												<small class='text-muted'>
+													<b:if cond='data:post.labels'>
+														<b:loop values='data:post.labels' var='label'>
+															<span class='badge bg-light'>
+																<a class='text-dark' expr:href='data:label.url' rel='tag'>
+																	<i class="bi bi-tag-fill" style="font-size: .5rem;"></i> <data:label.name />
+																</a>
+															</span>
+														</b:loop>
+													</b:if>
+												</small>
+											</div>
+										</div>
+									</div>
+									<div class="card-body pb-0">
+										<h4 class='card-title hover-underline-animation'>
+											<a expr:href='data:post.url' class='text-reset'>
+												<data:post.title />
+											</a>
+										</h4>
+										<p class='card-text'>
+											<b:eval expr='snippet(data:post.snippet, {length: 80})'/>
+										</p>
+									</div>
+									<div class="card-footer border-0 bg-body">
+										<div class="row justify-content-between">
+											<div class="col text-start">
+												<small class='text-muted'>
+													<data:post.dateHeader />
+												</small>
+											</div>
+											<div class="col text-end hidden-link">
+												<small class='text-muted'>
+													<a class='hover-underline-animation' expr:href='data:post.url'>
+														<i class="bi bi-book"></i> Baca
+													</a>
+												</small>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</b:includable>
+					<!-- Post -->
+					<b:includable id='post' var='post'>
+						<!-- Konten halaman statis -->
+						<b:if cond='data:blog.pageType == "static_page"'>
+							<!-- Jumbotron pada halaman statis -->
+							<div class="jumbotron" expr:style='&quot;background-image:url(\&quot;&quot; + data:post.firstImageUrl+ &quot;\&quot;); &quot;'>
+								<div class="jumbotron-overlay">
+									<div class="container text-center">
+										<h1 class="display-4">
+											<data:post.title />
+										</h1>
+									</div>
+								</div>
+							</div>
+						</b:if>
+						<!-- Konten halaman statis atau halaman posting -->
+						<b:if cond='data:blog.pageType == "item" or data:blog.pageType == "static_page"'>
+							<div class="container">
+								<div class='card-body' expr:id='&quot;post-body-&quot; + data:post.id'
+										expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+									<!-- Konten halaman posting -->
+									<b:if cond='data:blog.pageType == "item"'>
+										<!-- Breadcrumb -->
+										<b:include data='posts' name='breadcrumb'/>
+										<!-- Penulis dan Tanggal posting -->
+										<div class='card-text mb-3'>
+											<small class='text-muted'>
+												<i class="bi bi-person-circle"></i> <data:post.author /> <i class="bi bi-calendar3"></i> <data:post.dateHeader /> 
+											</small>
+										</div>
+										<!-- Jumbotron pada halaman posting -->
+										<div class="jumbotron mb-3" expr:style='&quot;background-image:url(\&quot;&quot; + data:post.firstImageUrl+ &quot;\&quot;); &quot;'>
+											<div class="jumbotron-overlay pt-0">
+												<div class="container text-center">
+													<h1 class="display-4">
+														<data:post.title />
+													</h1>
+												</div>
+											</div>
+										</div>
+									</b:if>
+									<!-- Isi konten pada halaman statis atau halaman Posting -->
+									<div id="post-toc">
+										<data:post.body/>
+										<!-- daftar isi -->
+										<script>mbtTOC2();</script>
+									</div>
+								</div>
+								<!-- Widget Postingan terkait -->
+								<b:if cond='data:blog.pageType == &quot;item&quot;'>
+									<div class='related-post' id='related-post'/>
+									<script type='text/javascript'>
+										var labelArray = [<b:if cond='data:post.labels'><b:loop values='data:post.labels' var='label'>
+										&quot;<data:label.name/>&quot;<b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
+										</b:loop></b:if>];
+										var relatedPostConfig = {
+										homePage: &quot;<data:blog.homepageUrl/>&quot;,
+										widgetTitle: &quot;&lt;h4&gt;Postingan Terkait&lt;/h4&gt;&lt;/hr&gt;&quot;,
+										numPosts: 5,
+										titleLength: &quot;auto&quot;,
+										containerId: &quot;related-post&quot;,
+										newTabLink: false,
+										widgetStyle: 1,
+										callBack: function() {}
+										};
+									</script>
+									<script style="text/javascript" src="https://cdn.rawgit.com/mowdot/mysitemap/master/relatedpost.js"></script>
+								</b:if>
+								<!-- Navigasi konten selanjutnya atau sebelumnya -->
+								<div class="card-footer">
+									<b:include name='nextprev' />
+								</div>
+								<!-- Komentar -->
+								<div class="card p-3 border-0">
+									<b:include data='post' name='comment_picker' />
+								</div>
+							</div>
+						</b:if>
+					</b:includable>
+					<!-- Breadcrumb -->
+					<b:includable id='breadcrumb' var='posts'>
+						<b:if cond='data:blog.pageType == &quot;item&quot;'>
+							<b:loop values='data:posts' var='post'>
+								<b:if cond='data:post.labels'>
+									<div class='breadcrumbs' itemscope='itemscope' itemtype='https://schema.org/BreadcrumbList'>
+										<i class="bi bi-house-door"></i>
+										<span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+											<a expr:href='data:blog.homepageUrl' title='Home' itemprop='item'>
+												<span itemprop='name'>Beranda</span>
+											</a>
+											<meta content='1' itemprop='position'/>
+										</span>
+										<i class="bi bi-tags"></i>
+										<b:loop index='num' values='data:post.labels' var='label'>
+											<span itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+												<a expr:href='data:label.url + &quot;?&amp;max-results=9&quot;' expr:title='data:label.name' itemprop='item'>
+													<span itemprop='name'><data:label.name/></span>
+												</a>
+												<meta expr:content='data:num+2' itemprop='position'/>
+											</span>
+											<i class="bi bi-chevron-right"></i>
+										</b:loop>
+										<span><data:post.title/></span>
+									</div>
+								</b:if>
+							</b:loop>
+						</b:if>
+					</b:includable>                    
+					<!-- Navigasi konten selanjutnya atau sebelumnya -->
+					<b:includable id='nextprev'>
+						<div class='row d-flex justify-content-between mb-3'>
+							<div class="col-4 text-start">
+								<b:if cond='data:newerPageUrl'>
+									<a expr:href='data:newerPageUrl'
+											expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'
+											expr:title='data:newerPageTitle'>
+											<i class="bi bi-chevron-double-left"></i> <data:newerPageTitle/>
+									</a>
+								</b:if>
+							</div> 
+							<div class="col-4 text-end">
+								<b:if cond='data:olderPageUrl'>
+									<a expr:href='data:olderPageUrl'
+											expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'
+											expr:title='data:olderPageTitle'>
+											<data:olderPageTitle/> <i class="bi bi-chevron-double-right"></i>
+									</a>
+								</b:if>
+							</div>
+						</div>
+					</b:includable>
+				</b:widget>
+				<!-- Widget Static Postingan populer  -->
+				<b:widget id='PopularPosts2' cond='data:blog.pageType == "item"' locked='false' title='Postingan Populer' type='PopularPosts'>
+					<!-- Widget Setting -->
+					<b:widget-settings>
+						<b:widget-setting name='numItemsToShow'>4</b:widget-setting>
+						<b:widget-setting name='showThumbnails'>true</b:widget-setting>
+						<b:widget-setting name='showSnippets'>true</b:widget-setting>
+						<b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
+					</b:widget-settings>
+					<!-- Widget layout -->
+					<b:includable id='main'>
+						<div class="container">
+							<!-- Widget Tittle -->
+							<b:if cond='data:title != &quot;&quot;'>
+								<h4 class="text-center"><data:title/></h4><hr/>
+							</b:if>
+							<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4">
+								<!-- Card Popular posts -->
+								<b:loop index='i' values='data:posts' var='post'>
+									<b:with value='data:post.featuredImage' var='image' >
+										<div class="col py-2">
+											<div class="card border-0">
+												<div class="card-header" expr:style='&quot;background-image:url(&quot; + data:image + &quot;); background-position: center; background-size: cover; height: 100px;&quot;' expr:alt='data:post.title'>
+												</div>
+												<div class="card-body p-1">
+													<h5 class="card-title ">
+														<a expr:href='data:post.href' class="text-reset hover-underline-animation">
+															<data:post.title/>
+														</a>
+													</h5>
+												</div>
+											</div>
+										</div>
+									</b:with>
+								</b:loop>
+							</div>
+						</div>
+					</b:includable>
+				</b:widget>
+				<!-- Widget Arsip -->
+				<b:widget id='BlogArchive1' locked='false' title='Arsip Blog' type='BlogArchive' cond='data:blog.pageType == "archive"'>
+					<b:widget-settings>
+						<b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
+						<b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
+						<b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+						<b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
+						<b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
+						<b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
+						<b:widget-setting name='chronological'>false</b:widget-setting>
+						<b:widget-setting name='showPosts'>true</b:widget-setting>
+						<b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
+					</b:widget-settings>
+						<b:includable id='main'>
+							<div class="container" style="padding-top: 4rem!important;">
+								<b:if cond='data:title != &quot;&quot;'>
+									<h3><data:title/></h3>
+								</b:if>
+								<div class='widget-content'>
+									<div id='ArchiveList'>
+										<div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+											<b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
+											<b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
+											<b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
+										</div>
+									</div>
+									<b:include name='quickedit'/>
+								</div>
+							</div>
+						</b:includable>
+						<b:includable id='flat' var='data'>
+							<ul class='list-group'>
+								<b:loop values='data:data' var='i'>
+									<li class='archivedate list-group-item'>
+										<div class="d-flex justify-content-between align-items-center">
+											<a expr:href='data:i.url'><data:i.name/></a> 
+											<span class='badge bg-primary rounded-pill'><data:i.post-count/></span>
+										</div>
+									</li>
+								</b:loop>
+							</ul>
+						</b:includable>
+						<b:includable id='interval' var='intervalData'>
+							<b:loop values='data:intervalData' var='interval'>
+								<ul>
+									<li expr:class='&quot;archivedate  &quot; + data:interval.expclass' style='text-indent: 0px;'>
+										<b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
+										<a class='post-count-link' expr:href='data:interval.url'>
+											<data:interval.name/>
+										</a>
+										<span class='post-count badge bg-primary rounded-pill' dir='ltr'><data:interval.post-count/></span>
+										<b:include cond='data:interval.data' data='interval.data' name='interval'/>
+										<b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
+									</li>
+								</ul>
+							</b:loop>
+						</b:includable>
+						<b:includable id='menu' var='data'>
+							<select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
+								<option value=''><data:title/></option>
+								<b:loop values='data:data' var='i'>
+									<option expr:value='data:i.url'><data:i.name/> (<data:i.post-count/>)</option>
+								</b:loop>
+							</select>
+						</b:includable>
+						<b:includable id='posts' var='posts'>
+							<ul class='posts'>
+								<b:loop values='data:posts' var='post'>
+									<li><a expr:href='data:post.url'><data:post.title/></a></li>
+								</b:loop>
+							</ul>
+						</b:includable>
+						<b:includable id='toggle' var='interval'>
+							<a class='toggle' href='javascript:void(0)'>
+								<span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
+								<b:if cond='data:interval.expclass == &quot;expanded&quot;'>
+									&#9660;&#160;
+								<b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
+									&#9668;&#160;
+								<b:else/>
+									&#9658;&#160;
+								</b:if>
+								</span>
+							</a>
+						</b:includable>
+				</b:widget>
+			</b:section>
+		</article>
+		<!-- Akhir Postingan -->
+		<!-- Awal Kategori -->
+		<b:section class='label' id='label' showaddelement='yes' style='background-color: var(--bs-body-bg);'>
+			<b:widget id='Label1' cond='data:view.isHomepage' locked='yes' title='Kategori' type='Label'>
+				<b:widget-settings>
+					<b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+					<b:widget-setting name='display'>LIST</b:widget-setting>
+					<b:widget-setting name='selectedLabelsList'>Android,Blogger,Elektronika,Elektro,Desain,Web,K3,Mekanika,Musik,Olahraga,Telekomunikasi,Bootstrap,Fotografi</b:widget-setting>
+					<b:widget-setting name='showType'>USER_SELECTED</b:widget-setting>
+					<b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+				</b:widget-settings>
+				<b:includable id='main'>
+					<div class="container py-3">
+						<!-- Judul -->
+						<div class="row">
+							<div class="col-sm-12 text-center mb-3 p-0">
+								<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+									<b:if cond='data:title != &quot;&quot;'>
+										<h3><data:title/></h3><hr/>
+									</b:if>
+								</div>
+							</div>
+						</div>
+						<!-- Isi kategori -->
+						<div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
+							<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+								<b:loop values='data:labels' var='label'>
+									<div class="col m-0 p-1">
+										<div data-aos="flip-left" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-delay="50">
+											<div class="card">
+												<b:if cond='data:blog.url == data:label.url'>
+													<span expr:dir='data:blog.languageDirection'><data:label.name/></span>
+												<b:else/>
+													<!-- Kondisi kategori -->
+													<a class="btn btn-outline-secondary btn-sm border-0" role="button" expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
+														<b:if cond='data:label.name ==  "Android"'>
+															<img src="https://i.postimg.cc/bwK8WWhm/android.jpg" class="card-img-top" alt="Android"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Blogger"'>
+															<img src="https://i.postimg.cc/qq51pHQk/trousers.jpg" class="card-img-top" alt="Blogger"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Elektronika"'>
+															<img src="https://i.postimg.cc/nLDYtRLB/engineer-nyolder.jpg" class="card-img-top" alt="Elektronika"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Web"'>
+															<img src="https://i.postimg.cc/C1wDc1Yt/coding.jpg" class="card-img-top" alt="Web"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Mekanika"'>
+															<img src="https://i.postimg.cc/xjtGFKXP/welder.jpg" class="card-img-top" alt="Mekanika"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Musik"'>
+															<img src="https://i.postimg.cc/8PV349zx/mixer.jpg" class="card-img-top" alt="Musik"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Telekomunikasi"'>
+															<img src="https://i.postimg.cc/HLjPjC68/telephone.jpg" class="card-img-top" alt="Telekomunikasi"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Olahraga"'>
+															<img src="https://i.postimg.cc/44VyYZgH/folding.jpg" class="card-img-top" alt="Olahraga"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Desain"'>
+															<img src="https://i.postimg.cc/SN4s85ST/child.jpg" class="card-img-top" alt="Desain"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "K3"'>
+															<img src="https://i.postimg.cc/yY7QDF5q/man.jpg" class="card-img-top" alt="K3"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Elektro"'>
+															<img src="https://i.postimg.cc/hPrnxnbC/electric.jpg" class="card-img-top" alt="Elektro"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Bootstrap"'>
+															<img src="https://i.postimg.cc/nrw8XNQZ/bootstrap.jpg" class="card-img-top" alt="Bootstrap"/>
+														</b:if>
+														<b:if cond='data:label.name ==  "Fotografi"'>
+															<img src="https://i.postimg.cc/MHtsHBNQ/fotografi.jpg" class="card-img-top" alt="Fotografi"/>
+														</b:if>
+														<div class="card-body p-2">
+															<p class="card-text">
+																<i class="bi bi-tag-fill" style="font-size: .8rem; color: secondary;"></i> 
+																<data:label.name/>
+																<b:if cond='data:showFreqNumbers'>
+																	<span dir='ltr'>(<data:label.count/>)</span>
+																</b:if>
+															</p>
+														</div>
+													</a>
+												</b:if>
+											</div>
+										</div>
+									</div>
+								</b:loop>
+							</div>
+						</div>
+					</div>
+				</b:includable>
+			</b:widget>
+		</b:section>
+		<!-- Akhir Kategori -->
+		<!-- Awal About -->                    
+		<section id="about" class="container">
+			<div class="card text-end h-100 border-0">
+				<div class="row no-gutters">
+					<div class="col-8 my-auto px-5">
+						<div data-aos="fade-left" data-aos-duration="1000">
+							<b:section id='aboutText1' class='about'>
+								<!-- Widget Text1 -->
+								<b:widget id='Text1' cond='data:view.isHomepage' locked='true' title='Profile' type='Text'>
+									<b:widget-settings>
+										<b:widget-setting name='content'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas quaerat nihil, consectetur ipsum quis tenetur beatae magnam quidem quisquam ipsa.</b:widget-setting>
+									</b:widget-settings>
+									<b:includable id='main'>
+										<div class="card-body py-5">
+											<!-- only display title if it's non-empty -->
+											<b:if cond='data:title != &quot;&quot;'>
+												<h3 class='card-title'><data:title/></h3> 
+											</b:if>
+											<div class='widget-content icons'>
+												<p class='card-text text-end'><data:content/></p>
+											</div>
+											<b:include name='quickedit'/>
+										</div>
+									</b:includable>
+								</b:widget>
+							</b:section>
+						</div>
+					</div>
+					<div class="col-4 my-auto text-start">
+						<div data-aos="fade-right" data-aos-duration="1000">
+                            <a href="/p/about.html" data-bs-toggle="tooltip" data-bs-title="About Me" target="_blank" class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" >
+                                <i class="bi bi-person-badge" style="font-size: 10rem; color:grey"></i>
+                            </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Akhir About -->
+		<!-- Awal Galeri -->
+		<section id='gallery'>
+			<div class="container">
+				<div class="card h-100 border-0">
+					<div class="row no-gutters">
+						<div class="col-4 my-auto text-end">
+							<div data-aos="fade-left" data-aos-duration="1000">
+								<a href="/p/gallery.html" data-bs-toggle="tooltip" data-bs-title="My Gallery" target="_blank" class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" >
+                                    <i class="bi bi-file-image" style="font-size: 10rem; color:grey"></i>
+                                </a>
+							</div>
+						</div>
+						<div class="col-8 my-auto px-5">
+							<div data-aos="fade-right" data-aos-duration="1000">
+								<b:section id='aboutText3' class='gallery'>
+									<!-- Widget Text3 -->
+									<b:widget id='Text3' cond='data:view.isHomepage' locked='true' title='Gallery' type='Text'>
+										<b:widget-settings>
+											<b:widget-setting name='content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime cum delectus quidem ducimus nostrum alias odit amet quaerat voluptatum.</b:widget-setting>
+										</b:widget-settings>
+										<b:includable id='main'>
+											<div class="card-body py-5">
+												<!-- only display title if it's non-empty -->
+												<b:if cond='data:title != &quot;&quot;'>
+													<h3 class='card-title'><data:title/></h3>
+												</b:if>
+												<div class='widget-content icons'>
+													<p class='card-text'><data:content/></p>
+												</div>
+												<b:include name='quickedit'/>
+											</div>
+										</b:includable>
+									</b:widget> 
+								</b:section>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</section>
+		<!-- Akhir Galeri -->
+		<div class='clearfix' />
+		<!-- Awal Footer -->
+		<footer id='footer-wrapper'>
+			<div data-aos="fade-in" data-aos-offset="20" data-aos-delay="20" data-aos-duration="500">
+				<b:section class='footer' id='footer' showaddelement='yes'>
+					<!-- Kontak -->
+					<b:widget id='ContactForm1' locked='false' title='Kontak' type='ContactForm' cond='data:view.isHomepage'>
+						<b:includable id='main'>
+							<div id="contact" class="py-2" style="min-height: 800px;">
+								<div class="container">
+									<div class="row pt-4 mb-4">
+										<div class="col text-center">
+											<b:if cond='data:title != &quot;&quot;'>
+												<h3 class='title'><data:title/></h3><hr/>
+											</b:if>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 offset-md-3">
+											<form>
+												<div class="mb-3">
+													<label for="nama"><data:contactFormNameMsg/></label>
+													<input type="text" class="form-control" expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' />
+												</div>
+												<div class="mb-3">
+													<label for="email"><data:contactFormEmailMsg/></label>
+													<input type="text" class="form-control" expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' />
+												</div>
+												<div class="mb-3">
+													<label for="email-message"><data:contactFormMessageMsg/></label>
+													<textarea name="email-message" expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' class="form-control" rows="5"></textarea>
+												</div>
+												<div class="mb-3">
+													<button type="button" class="btn" style='background-color: var(--bs-secondary-bg);' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg'>Kirim Pesan</button>
+												</div>
+												<div style='text-align: center; max-width: 222px; width: 100%'>
+													<p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
+													<p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<b:include name='quickedit'/>
+							</div>
+						</b:includable>
+					</b:widget>
+					<!-- Akhir Kontak -->
+				</b:section>
+
+				<div class="bg-body-tertiary">
+					<div class="container mt-2" style="min-height: 300px;">
+						<!-- Navigasi Social Media -->
+						<div class="row" id='Social'>
+							<div class="icons col py-2 text-center">
+								<a href="#" title="telegram" target="_blank"><i class="bi bi-telegram"></i></a>
+								<a href="#" title="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+								<a href="#" title="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+								<a href="#" title="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+								<a href="#" title="github" target="_blank"><i class="bi bi-github"></i></a>
+								<a href="#" title="rss" target="_blank"><i class="bi bi-rss-fill"></i></a>
+							</div> 
+						</div> 
+						<!-- Navigasi Halaman -->
+						<div class="row justify-content-md-center" id='Navigation'>
+							<div class="col col-lg-2 text-center">
+								<a href="#">Kebijakan Privasi</a>
+							</div>  
+							<div class="col-md-auto text-center">
+								<a href="#">Disclaimer</a>
+							</div>
+							<div class="col-md-auto text-center">
+								<a href="#">Arsip</a>
+							</div>
+							<div class="col col-lg-2 text-center">
+								<a href="#">Peta Situs</a>
+							</div>
+						</div>
+						<!-- Attribute -->
+						<div class='col py-3 text-center' id='Attributaion'>
+							<p><a expr:href='data:blog.homepageUrl'><img src="https://i.postimg.cc/bJ4HZ35q/bgs-inisial-logo-3-01.png" height="35" expr:alt='data:blog.title' /></a> &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script></p>
+							<p style='font-size: .8rem;'>
+								blogger <a href="https://www.blogger.com" target="_blank"><i class="bi bi-google"></i></a> <i class="bi bi-x-lg"></i> <a href="https://getbootstrap.com/" target="_blank"><i class="bi bi-bootstrap-fill"></i></a> bootstrap
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+        </footer>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <!-- Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <!-- bootstrap theme -->
+		<script>
+			//<![CDATA[
+			/*!
+			* Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+			* Copyright 2011-2023 The Bootstrap Authors
+			* Licensed under the Creative Commons Attribution 3.0 Unported License.
+			*/
+
+			(() => {
+			'use strict'
+
+			const storedTheme = localStorage.getItem('theme')
+
+			const getPreferredTheme = () => {
+				if (storedTheme) {
+				return storedTheme
+				}
+
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+			}
+
+			const setTheme = function (theme) {
+				if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+				} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+				}
+			}
+
+			setTheme(getPreferredTheme())
+
+			const showActiveTheme = (theme, focus = false) => {
+				const themeSwitcher = document.querySelector('#bd-theme')
+
+				if (!themeSwitcher) {
+				return
+				}
+
+				const themeSwitcherText = document.querySelector('#bd-theme-text')
+				const activeThemeIcon = document.querySelector('.theme-icon-active')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const iconOfActiveBtn = btnToActive.querySelector('i').dataset.themeIcon
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+				element.classList.remove('active')
+				element.setAttribute('aria-pressed', 'false')
+				})
+
+				btnToActive.classList.add('active')
+				btnToActive.setAttribute('aria-pressed', 'true')
+				activeThemeIcon.classList.remove(activeThemeIcon.dataset.themeIconActive)
+				activeThemeIcon.classList.add(iconOfActiveBtn)
+				activeThemeIcon.dataset.iconActive = iconOfActiveBtn
+				const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+				themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+				if (focus) {
+				themeSwitcher.focus()
+				}
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+				setTheme(getPreferredTheme())
+				}
+			})
+
+			window.addEventListener('DOMContentLoaded', () => {
+				showActiveTheme(getPreferredTheme())
+
+				document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+					const theme = toggle.getAttribute('data-bs-theme-value')
+					localStorage.setItem('theme', theme)
+					setTheme(theme)
+					showActiveTheme(theme, true)
+					})
+				})
+			})
+			})()
+			//]]>
+		</script>
+        <!-- bootstrap  masonry -->
+        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+        <!-- search img for lightbox -->
+		<script>
+			//<![CDATA[
+			// Mendapatkan semua elemen <article> dalam dokumen
+			var articles = document.getElementsByTagName('article');
+
+			// Loop melalui setiap elemen <article>
+			for (var i = 0; i < articles.length; i++) {
+				var article = articles[i];
+				
+				// Mencari semua elemen <img> dalam elemen <article> saat ini
+				var imagesInArticle = article.getElementsByTagName('img');
+				
+				// Loop melalui setiap elemen gambar dalam elemen <article>
+				for (var j = 0; j < imagesInArticle.length; j++) {
+					var img = imagesInArticle[j];
+					var parentLink = img.parentNode; // Mendapatkan elemen <a> yang mengelilingi gambar
+
+					// Memeriksa apakah parentLink adalah elemen <a>
+					if (parentLink.tagName === 'A') {
+						parentLink.setAttribute('data-toggle', 'lightbox');
+						parentLink.setAttribute('data-gallery', 'mygallery');
+						parentLink.setAttribute('data-type', 'image');
+
+						// Menambahkan atribut data-caption dengan nilai dari atribut alt elemen img
+						var altText = img.getAttribute('alt');
+						if (altText) {
+							parentLink.setAttribute('data-caption', altText);
+						}
+					}
+				}
+			}
+			//]]>
+		</script>
+		<!-- bootstrap lightbox -->
+		<script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+		<!-- Scroll To Top Button -->
+		<script>
+			//<![CDATA[
+			// Get the button:
+			let mybutton = document.getElementById("upBtn");
+
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function() {scrollFunction()};
+
+			function scrollFunction() {
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					mybutton.style.display = "block";
+				} else {
+					mybutton.style.display = "none";
+				}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0; // For Safari
+				document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+			}
+			//]]>
+		</script>
+		<!-- Navbar and To Top Button on scroll when homepage view -->
+		<b:if cond='data:view.isHomepage'>
+		<script>
+			//<![CDATA[
+			window.onscroll = function() {myFunction()};
+			function myFunction() {
+				var navbar = document.getElementById("navbar");
+				if (document.body.scrollTop >= 768 || document.documentElement.scrollTop >= 768) {
+					navbar.className = "navbar" + " fixed-top" + " navbar-expand-lg" + " bg-body-tertiary"; 
+				} else if (document.body.scrollTop <= 768 || document.documentElement.scrollTop <= 768) {
+					navbar.className = "navbar" + " fixed-top" + " navbar-expand-lg" + " navbar-dark" + " bg-transparent";
+				} else {
+					navbar.className = navbar.className.replace(" navbar fixed-top navbar-expand-lg bg-body-tertiary", "");
+				}
+				// Get the button:
+				let mybutton = document.getElementById("upBtn");
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					mybutton.style.display = "block";
+				} else {
+					mybutton.style.display = "none";
+				}
+			}
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0; // For Safari
+				document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+			}
+			//]]>
+		</script>
+		</b:if>
+		<!-- Animate On Scroll -->
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+            AOS.init();
+		</script>
+		<!-- tooltips -->
+		<script>
+			//<![CDATA[
+			const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+			const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+			//]]>
+		</script>
+		<!-- Prism -->
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    </body>
+</html>
