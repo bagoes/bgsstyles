@@ -1443,9 +1443,11 @@
 					</div>
 					<div class="col-4 my-auto text-start">
 						<div data-aos="fade-right" data-aos-duration="1000">
-                            <a href="/p/about.html" data-bs-toggle="tooltip" data-bs-title="About Me" target="_blank" class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" >
-                                <i class="bi bi-person-badge" style="font-size: 10rem; color:grey"></i>
-                            </a>
+							<b:if cond='data:view.isHomepage'>
+								<a href="/p/about.html" data-bs-toggle="tooltip" data-bs-title="About Me" target="_blank" class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.50rem, 0);" >
+									<i class="bi bi-person-badge" style="font-size: 10rem; color:grey"></i>
+								</a>
+							</b:if>
 						</div>
 					</div>
 				</div>
@@ -1459,9 +1461,11 @@
 					<div class="row no-gutters">
 						<div class="col-4 my-auto text-end">
 							<div data-aos="fade-left" data-aos-duration="1000">
-								<a href="/p/gallery.html" data-bs-toggle="tooltip" data-bs-title="My Gallery" target="_blank" class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" >
-                                    <i class="bi bi-file-image" style="font-size: 10rem; color:grey"></i>
-                                </a>
+								<b:if cond='data:view.isHomepage'>
+									<a href="/p/gallery.html" data-bs-toggle="tooltip" data-bs-title="My Gallery" target="_blank" class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.50rem, 0);" >
+										<i class="bi bi-file-image" style="font-size: 10rem; color:grey"></i>
+									</a>
+								</b:if>
 							</div>
 						</div>
 						<div class="col-8 my-auto px-5">
