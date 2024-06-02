@@ -15,7 +15,7 @@
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 
 		<!-- Prism -->
-		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrownight.min.css" rel="stylesheet" />
+		<link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet"/>
@@ -1594,7 +1594,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
         <!-- bootstrap theme -->
 		<script>
-			//<![CDATA[
+		//<![CDATA[
 			/*!
 			* Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
 			* Copyright 2011-2023 The Bootstrap Authors
@@ -1674,7 +1674,7 @@
 				})
 			})
 			})()
-			//]]>
+		//]]>
 		</script>
         <!-- bootstrap  masonry -->
         <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
@@ -1781,6 +1781,41 @@
 			//]]>
 		</script>
 		<!-- Prism -->
+		<script>
+		//<![CDATA[
+			// Fungsi untuk mengubah tema
+			function setPrismTheme(theme) {
+				// URL tema light dan dark
+				var prismLight = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css';
+				var prismDark = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-okaidia.min.css';
+				// Referensi ke elemen link tema
+				var prismThemeLink = document.getElementById('prism-theme');
+				// Ganti href sesuai tema saat ini
+				if (theme === 'dark') {
+					prismThemeLink.setAttribute('href', prismDark);
+				} else if (theme === 'light') {
+					prismThemeLink.setAttribute('href', prismLight);
+				} else {
+					// Mengatur tema berdasarkan preferensi pengguna atau pengaturan default
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches  ? 'dark' : 'light') {
+						prismThemeLink.setAttribute('href', prismDark);
+					} else {
+						prismThemeLink.setAttribute('href', prismLight);
+					}
+				}
+			}
+			// Event listeners untuk tombol tema
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						setPrismTheme(theme)
+					})
+				});
+			// Inisialisasi tema pada load berdasarkan preferensi pengguna atau pengaturan default
+			setPrismTheme('auto');
+		//]]>
+		</script>
 		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
