@@ -109,8 +109,8 @@
 			.center-cropped {
 				object-fit:cover;
 				object-position:center; 
-				height: 300px; 
-				width: 300px;
+				height: 100px; 
+				width: 400px;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
@@ -142,8 +142,8 @@
 			.center-cropped {
 				object-fit:cover;
 				object-position:center; 
-				height: 210px; 
-				width: 210px;
+				height: 240px; 
+				width: 180px;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
@@ -175,11 +175,14 @@
 			.center-cropped {
 				object-fit:cover;
 				object-position:center; 
-				height: 220px; 
-				width: 220px;
+				height: 400px; 
+				width: 300px;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
+			}
+			#FeaturedPost1 .card-body, #PopularPosts1 .card-body {
+				padding-top: 5rem !important;
 			}
 		}
 		/* Extra Large */
@@ -208,11 +211,14 @@
 			.center-cropped {
 				object-fit:cover;
 				object-position:center; 
-				height: 230px; 
-				width: 230px;
+				height: 384px; 
+				width: 512px;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
+			}
+			#FeaturedPost1 .card-body, #PopularPosts1 .card-body {
+				padding-top: 7rem !important;
 			}
 		}
 		.hero {
@@ -380,6 +386,10 @@
 			font-size: .8rem;
 			text-align: center;
 			color: secondary;
+		}
+
+		.PopularPosts img {
+			padding-right: 0;
 		}
 
 		/*####TOC Plugin V2.0 by MyBloggerTricks####*/
@@ -787,41 +797,35 @@
 					</b:widget-settings>
 					<b:includable id='main'>
 						<div class="container py-3">
-							<div class="col-12 mb-5 p-0">
-								<div class="card h-100 mb-3 border-0">
-									<b:if cond='data:title != &quot;&quot;'>
-										<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
-											<span class="card-header bg-transparent border-0 p-0 text-center">
-												<h3><data:title/></h3><hr/>
-											</span>
-										</div>
-									</b:if>
-									<div class="row no-gutters">
-										<div class="col-md-4 order-md-last">
-											<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-												<b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
-													<img class='rounded center-cropped' expr:src='data:postFirstImage'/>
-												<b:else/>
-													<img class='rounded center-cropped' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
-												</b:if>
-											</div>
-										</div>
-										<div class="col-md-8 order-md-first">
-											<div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
-												<div class="card-body text-end py-5">
-													<b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
-														<h4 class="card-title hover-underline-animation">
-															<a expr:href='data:postUrl' class='text-reset'><data:postTitle/></a>
-														</h4>
-													</b:if>
-													<b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
-														<p class="card-text text-end">
-															<b:eval expr='snippet(data:postSummary, {length: 200})' />
-														</p>
-													</b:if>
-													<div class="hidden-link"><small class="text-muted"><a class='hover-underline-animation' expr:href='data:postUrl'><i class="bi bi-book"></i> Baca</a></small></div>
-												</div>
-											</div>
+							<b:if cond='data:title != &quot;&quot;'>
+								<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+									<span class="text-center">
+										<h3><data:title/></h3><hr/>
+									</span>
+								</div>
+							</b:if>
+							<div class="card h-100 mb-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+								<div class="row g-0">
+									<div class="col-sm-4 order-sm-last">
+										<b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
+											<img class='center-cropped img-fluid' expr:src='data:postFirstImage'/>
+										<b:else/>
+											<img class='center-cropped img-fluid' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
+										</b:if>
+									</div>
+									<div class="col-sm-8 order-sm-first">
+										<div class="card-body text-sm-end">
+											<b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
+												<h4 class="card-title hover-underline-animation">
+													<a expr:href='data:postUrl' class='text-reset'><data:postTitle/></a>
+												</h4>
+											</b:if>
+											<b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
+												<p class="card-text text-sm-end">
+													<b:eval expr='snippet(data:postSummary, {length: 200})' />
+												</p>
+											</b:if>
+											<div class="hidden-link"><small class="text-muted"><a class='hover-underline-animation' expr:href='data:postUrl'><i class="bi bi-book"></i> Baca</a></small></div>
 										</div>
 									</div>
 								</div>
@@ -837,89 +841,85 @@
 						<b:widget-setting name='showSnippets'>true</b:widget-setting>
 						<b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
 					</b:widget-settings>
-					<!-- Widget Layout -->
 					<b:includable id='main'>
 						<div class="container">
-							<div class="col-12 p-0">
-								<!-- Widget Title -->
-								<b:if cond='data:title != &quot;&quot;'>
-									<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
-										<span class="text-center">
-											<h3><data:title/></h3><hr/>
-										</span>
-									</div>
-								</b:if>
-								<div class='carousel slide mb-3' data-bs-ride='carousel' id='carouselExampleInterval'>
-									<div class="carousel-inner">
-										<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-											<b:loop index='i' values='data:posts' var='post'>
-												<b:with value='data:post.featuredImage' var='image'>
-													<b:if cond='data:i == 1'>
-														<div class='carousel-item active' data-bs-interval='5000'>
-															<div class="row no-gutter">
-																<div class="col-md-4">
+							<b:if cond='data:title != &quot;&quot;'>
+								<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
+									<span class="text-center">
+										<h3><data:title/></h3><hr/>
+									</span>
+								</div>
+							</b:if>
+							<div class='carousel slide mb-3' data-bs-ride='carousel' id='carouselExampleInterval'>
+								<div class="carousel-inner">
+									<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+										<b:loop index='i' values='data:posts' var='post'>
+											<b:with value='data:post.featuredImage' var='image'>
+												<b:if cond='data:i == 1'>
+													<div class='carousel-item active' data-bs-interval='5000'>
+														<div class="card h-100 mb-3">
+															<div class="row g-0">
+																<div class="col-sm-4">
 																	<b:if cond='data:image'>
-																		<img class='rounded center-cropped p-0' expr:src='data:image' />
+																		<img class='center-cropped img-fluid' expr:src='data:image' />
 																	<b:else/>
-																		<img class='rounded center-cropped p-0' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
+																		<img class='center-cropped img-fluid' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
 																	</b:if>
 																</div>
-																<div class="col-md-8">
-																	<div class="card h-100 border-0">
-																		<div class="card-body py-5">
-																			<h4 class="card-title hover-underline-animation">
-																				<a class="text-reset" expr:href='data:post.href'><data:post.title /></a>
-																			</h4>
-																			<p class='card-text'>
-																				<b:eval expr='snippet(data:post.snippet, {length: 200})' />
-																			</p>
-																			<div class="hidden-link">
-																				<small class="text-muted">
-																					<a class='hover-underline-animation' expr:href='data:post.href'>
-																						<i class="bi bi-book"></i> Baca
-																					</a>
-																				</small>
-																			</div>
+																<div class="col-sm-8">
+																	<div class="card-body">
+																		<h4 class="card-title hover-underline-animation">
+																			<a class="text-reset" expr:href='data:post.href'><data:post.title /></a>
+																		</h4>
+																		<p class='card-text'>
+																			<b:eval expr='snippet(data:post.snippet, {length: 200})' />
+																		</p>
+																		<div class="hidden-link">
+																			<small class="text-muted">
+																				<a class='hover-underline-animation' expr:href='data:post.href'>
+																					<i class="bi bi-book"></i> Baca
+																				</a>
+																			</small>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-													<b:else />
-														<div class='carousel-item' data-bs-interval='5000'>
-															<div class="row no-gutter">
-																<div class="col-md-4">
+													</div>
+												<b:else />
+													<div class='carousel-item' data-bs-interval='5000'>
+														<div class="card h-100 mb-3">
+															<div class="row g-0">
+																<div class="col-sm-4">
 																	<b:if cond='data:image'>
-																		<img class='rounded center-cropped p-0' expr:src='data:image' />
+																		<img class='center-cropped img-fluid' expr:src='data:image' />
 																	<b:else/>
-																		<img class='rounded center-cropped p-0' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
+																		<img class='center-cropped img-fluid' src='https://i.postimg.cc/xdBQnrSL/joeright-youtube-channel-art-black.png'/>
 																	</b:if>
 																</div>
-																<div class="col-md-8">
-																	<div class="card h-100 border-0">
-																		<div class="card-body py-5">
-																			<h4 class="card-title hover-underline-animation">
-																				<a class='text-reset' expr:href='data:post.href'><data:post.title /></a>
-																			</h4>
-																			<p class='card-text'>
-																				<b:eval expr='snippet(data:post.snippet, {length: 200})' />
-																			</p>
-																			<div class="hidden-link">
-																				<small class="text-muted">
-																					<a class='hover-underline-animation' expr:href='data:post.href'>
-																						<i class="bi bi-book"></i> Baca
-																					</a>
-																				</small>
-																			</div>
+																<div class="col-sm-8">
+																	<div class="card-body">
+																		<h4 class="card-title hover-underline-animation">
+																			<a class='text-reset' expr:href='data:post.href'><data:post.title /></a>
+																		</h4>
+																		<p class='card-text'>
+																			<b:eval expr='snippet(data:post.snippet, {length: 200})' />
+																		</p>
+																		<div class="hidden-link">
+																			<small class="text-muted">
+																				<a class='hover-underline-animation' expr:href='data:post.href'>
+																					<i class="bi bi-book"></i> Baca
+																				</a>
+																			</small>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-													</b:if>
-												</b:with>
-											</b:loop>
-										</div>
+													</div>
+												</b:if>
+											</b:with>
+										</b:loop>
 									</div>
 								</div>
 							</div>
@@ -969,10 +969,10 @@
 										});
 							</script>
 						</b:if>
-						<!-- display search padding top 5 -->
+						<!-- search -->
 						<b:if cond='data:posts.any and data:view.isSearch'>
 							<div class="container" style="padding-top: 4rem!important;">
-								<div class="col-lg-12 p-0 text-center">
+								<div class="col-lg-12 pt-5 text-center">
 									<div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="500" data-aos-easing="ease-in-out">
 										<h3 class='title'>Postingan</h3><hr/>
 									</div>
@@ -992,7 +992,7 @@
 						<!-- Include Index -->
 						<b:if cond='data:blog.pageType == "index"'>
 							<div class="container">
-								<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5" data-masonry='{"percentPosition": true }'>
+								<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5" data-masonry='{"percentPosition": true }'>
 									<b:loop values='data:posts' var='post'>
 										<b:include data='post' name='index' />
 									</b:loop>
@@ -1010,7 +1010,7 @@
 					<b:includable id='index' var='post'>
 						<div class='col'>
 							<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-								<div class='card border-0'>
+								<div class='card'>
 									<div class="card-header" expr:style='&quot;background-image:url(\&quot;&quot; + data:post.firstImageUrl+ &quot;\&quot;); background-position: center; background-size: cover; height: 100px;&quot;'>
 										<div class="position-relative" style="background-color: rgba(0,0,0, 0.9);">
 											<div class="position-absolute top-0 start-0">
@@ -1342,7 +1342,7 @@
 						</div>
 						<!-- Isi kategori -->
 						<div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
-							<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+							<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4">
 								<b:loop values='data:labels' var='label'>
 									<div class="col m-0 p-1">
 										<div data-aos="flip-left" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-delay="50">
